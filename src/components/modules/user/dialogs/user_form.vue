@@ -397,7 +397,7 @@ export default {
     },
     samedata() {
       let pass = this.userdata.password == "12345678";
-      if (this.cpass) {
+      if (!this.cpass) {
         return false;
       } else {
         return pass;
@@ -453,9 +453,26 @@ export default {
           (this.userdata.password.length == 0 &&
             this.userdata.confirmpassword.length == 0),
         phone: this.userdata.phone.length <= 10,
-        samedata: this.samedata
+        samedata: this.samedata,
+        edited: this.edited
       };
       return form;
+    },
+    edited() {
+      let origen = this.item;
+      let destino = this.userdata;
+      return (
+        origen.name == destino.name &&
+        origen.last == destino.last &&
+        origen.doc == destino.doc &&
+        origen.doctype == destino.doctype &&
+        origen.nac == destino.nac &&
+        origen.email == destino.email &&
+        origen.phone == destino.phone &&
+        origen.level == destino.level &&
+        origen.birth == destino.birth &&
+        origen.image == destino.image
+      );
     },
     computedDateFormatted() {
       return this.formatDate(this.birthdate);
@@ -507,23 +524,44 @@ export default {
       if (this.action == "del") {
         this.changed = false;
       } else {
-        this.changed =
-          item.name ||
-          item.last ||
-          item.doctype ||
-          item.nac ||
-          item.doc ||
-          item.docused ||
-          item.email.valid ||
-          item.email.len ||
-          item.email.used ||
-          item.phone ||
-          item.level ||
-          item.password ||
-          item.confirmpassword ||
-          item.comparePass ||
-          item.birth ||
-          item.samedata;
+        if (this.action == "edit") {
+          this.changed =
+            item.name ||
+            item.last ||
+            item.doctype ||
+            item.nac ||
+            item.doc ||
+            item.docused ||
+            item.email.valid ||
+            item.email.len ||
+            item.email.used ||
+            item.phone ||
+            item.level ||
+            item.password ||
+            item.confirmpassword ||
+            item.comparePass ||
+            item.birth ||
+            item.samedata ||
+            item.edited;
+        } else {
+          this.changed =
+            item.name ||
+            item.last ||
+            item.doctype ||
+            item.nac ||
+            item.doc ||
+            item.docused ||
+            item.email.valid ||
+            item.email.len ||
+            item.email.used ||
+            item.phone ||
+            item.level ||
+            item.password ||
+            item.confirmpassword ||
+            item.comparePass ||
+            item.birth ||
+            item.samedata;
+        }
       }
     },
     birthdate() {

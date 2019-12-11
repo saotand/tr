@@ -25,7 +25,6 @@ export default {
                         message = error;
                         commit("ui_m_warning", message);
                     }
-                    //commit("ui_m_error", message);
                 })
                 .then(function () {
                     commit("ui_m_loading", false);
@@ -38,7 +37,6 @@ export default {
     admin_a_add_users: ({ commit }, payload) => {
         const Token = sessionStorage.getItem("token");
         const options = { headers: { 'Authorization': Token } };
-        commit('ui_m_loading', true);
         let url = "/user/add?format=json";
         let useradd = {
             email: payload.email,
@@ -50,15 +48,18 @@ export default {
             phone: payload.phone,
             level: payload.level,
             birth: payload.birth,
-            pass: payload.password
+            pass: payload.password,
+            image: payload.image
         }
+        console.log(useradd)
         if (Token) {
             commit("ui_m_loading", true);
             commit("ui_m_error", false);
             axios
                 .post(url, useradd, options)
                 .then(response => {
-                    let useradded = response.data.data
+                    let useradded = response.data.data;
+                    console.log(useradded);
                     commit('admin_m_add_users', useradded);
                     commit('ui_m_success', "Usuario guardado");
                 })

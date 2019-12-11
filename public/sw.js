@@ -16,6 +16,7 @@ if (workbox) {
 }
 */
 
+/*
 
 // Nombre de la version del cache
 var CACHE_NAME = 'turepuesto_v1';
@@ -117,4 +118,4 @@ self.addEventListener('notificationclick', function (event) {
     event.waitUntil(
         clients.openWindow('http://google.com')
     );
-});
+});*/
