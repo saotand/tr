@@ -21,7 +21,7 @@
           <v-icon dark class="text-white">fa-refresh</v-icon>
         </v-btn>
       </app-tooltip>
-      <app-user-form></app-user-form>
+      <app-user-form v-if="!loading"></app-user-form>
     </template>
     <template>
       <app-usersdetails v-if="details" :users="users" :search="search"></app-usersdetails>
@@ -31,7 +31,6 @@
 </template>
 <script>
 import cmpUserForm from "@/components/modules/user/dialogs/user_form.vue";
-import cmpAddNewUser from "@/components/modules/user/dialogs/add_user_dialog";
 import cmpUserCards from "@/components/modules/user/user_list/user_cards_list";
 
 export default {
@@ -50,6 +49,9 @@ export default {
     };
   },
   computed: {
+    loading() {
+      return this.$store.getters.ui_g_loading;
+    },
     users() {
       return this.$store.getters.admin_g_users;
     }
@@ -68,7 +70,6 @@ export default {
   },
   components: {
     "app-user-form": cmpUserForm,
-    "app-user-dialog-new": cmpAddNewUser,
     "app-userscards": cmpUserCards
   }
 };

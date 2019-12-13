@@ -77,9 +77,8 @@
                 <v-layout row wrap>
                   <v-flex sm6>
                     <v-text-field
-                      name="name"
+                      :name="'name'+item.ID"
                       label="Nombre"
-                      :id="'name'+userdata.ID"
                       type="text"
                       v-model="userdata.name"
                       :rules="[v => !!v || 'Coloca tu nombre']"
@@ -88,9 +87,8 @@
                   </v-flex>
                   <v-flex sm6>
                     <v-text-field
-                      name="last"
+                      :name="'last'+item.ID"
                       label="Apellido"
-                      :id="'last'+userdata.ID"
                       type="text"
                       v-model="userdata.last"
                       :rules="[v => !!v || 'Coloca tu apellido']"
@@ -99,6 +97,7 @@
                   </v-flex>
                   <v-flex xs12 sm6>
                     <v-select
+                      :name="'doctype'+item.ID"
                       item-value="value"
                       v-model="userdata.doctype"
                       :disabled="item.ID == master"
@@ -111,6 +110,7 @@
                   </v-flex>
                   <v-flex xs2 sm1>
                     <v-select
+                      :name="'nac'+item.ID"
                       item-value="value"
                       v-model="userdata.nac"
                       :disabled="item.ID == master"
@@ -123,10 +123,9 @@
                   </v-flex>
                   <v-flex xs10 sm5>
                     <v-text-field
-                      name="cedula"
+                      :name="'cedula'+item.ID"
                       :label="doctypelabel"
                       :disabled="item.ID == master"
-                      :id="'cedula'+userdata.ID"
                       type="text"
                       v-model="userdata.doc"
                       mask="########"
@@ -137,9 +136,8 @@
                   </v-flex>
                   <v-flex sm6>
                     <v-text-field
-                      name="email"
+                      :name="'email'+item.ID"
                       label="Correo electrónico"
-                      :id="'email'+userdata.ID"
                       type="email"
                       v-model="userdata.email"
                       required
@@ -149,9 +147,8 @@
                   </v-flex>
                   <v-flex sm6>
                     <v-text-field
-                      name="telefono"
+                      :name="'telefono'+item.ID"
                       label="Teléfono"
-                      :id="'telefono'+userdata.ID"
                       type="text"
                       v-model="userdata.phone"
                       required
@@ -160,6 +157,7 @@
                   </v-flex>
                   <v-flex sm6>
                     <v-select
+                      :name="'level'+item.ID"
                       item-value="value"
                       v-model="userdata.level"
                       :disabled="item.ID == master"
@@ -185,11 +183,10 @@
                     >
                       <template v-slot:activator="{ on }">
                         <v-text-field
+                          :name="'birth'+item.ID"
                           :disabled="item.ID == master"
                           readonly
-                          name="birth"
                           label="Fecha de Nacimiento"
-                          :id="'birth'+userdata.ID"
                           type="text"
                           v-model="birthdateFormatted"
                           hint
@@ -219,24 +216,25 @@
                   </v-flex>
                   <v-flex sm6 v-if="cpass || action == 'new'">
                     <v-text-field
+                      :name="'password'+item.ID"
                       @click="userdata.confirmpassword=''"
-                      name="password"
                       label="Contraseña"
-                      :id="'password'+userdata.ID"
                       type="password"
                       v-model="userdata.password"
                       :rules="[minlength]"
                       required
+                      autocomplete
                     ></v-text-field>
                   </v-flex>
                   <v-flex sm6 v-if="cpass || action == 'new'">
                     <v-text-field
-                      name="confirmpassword"
+                      :name="'confirmpassword'+item.ID"
                       label="Confirmar la Contraseña"
-                      :id="'confirmpassword'+userdata.ID"
                       type="password"
                       v-model="userdata.confirmpassword"
                       :rules="[comparePasswords]"
+                      required
+                      autocomplete
                     ></v-text-field>
                   </v-flex>
                 </v-layout>
@@ -300,13 +298,6 @@
             </v-card-actions>
           </form>
         </v-container>
-        <code>{{samedata}}</code>
-        <br />
-        <code>{{formvalidate}}</code>
-        <br />
-        <code>{{userdata}}</code>
-        <br />
-        <code>{{item}}</code>
       </app-panel>
     </v-dialog>
   </span>
@@ -591,14 +582,40 @@ export default {
   methods: {
     onsubmit() {
       if (this.action == "edit") {
-        let editdata = this.userdata;
+        let editdata = {
+          ID: this.userdata.ID,
+          image: this.userdata.image,
+          name: this.userdata.name,
+          last: this.userdata.last,
+          doctype: this.userdata.doctype,
+          nac: this.userdata.nac,
+          doc: this.userdata.doc,
+          email: this.userdata.email,
+          password: this.userdata.password,
+          phone: this.userdata.phone,
+          birth: this.userdata.birth,
+          level: this.userdata.level
+        };
+
         this.$store.dispatch("admin_a_edit_users", editdata);
       } else if (this.action == "del") {
         let deldata = this.userdata.ID;
         this.$store.dispatch("admin_a_del_users", deldata);
       } else {
-        let newdata = this.userdata;
-        delete newdata.ID;
+        let newdata = {
+          image: this.userdata.image,
+          name: this.userdata.name,
+          last: this.userdata.last,
+          doctype: this.userdata.doctype,
+          nac: this.userdata.nac,
+          doc: this.userdata.doc,
+          email: this.userdata.email,
+          password: this.userdata.password,
+          phone: this.userdata.phone,
+          birth: this.userdata.birth,
+          level: this.userdata.level
+        };
+
         this.$store.dispatch("admin_a_add_users", newdata);
       }
       this.onCancel();
@@ -648,7 +665,6 @@ export default {
       this.showWindow();
     },
     onCancel() {
-      this.hideWindow();
       if (this.action == "edit") {
         this.clearfromeditForm();
       } else if (this.action == "del") {
@@ -656,6 +672,7 @@ export default {
       } else {
         this.clearForm();
       }
+      this.hideWindow();
     },
     showWindow() {
       this.form.dialog = true;
@@ -760,12 +777,21 @@ export default {
     }
   },
   updated() {
+    // eslint-disable-next-line
+    console.log(this.userdata.ID);
     if (this.action == "edit") {
       if (this.userdata.ID != this.item.ID) this.clearfromeditForm();
     } else if (this.action == "del") {
       if (this.userdata.ID != this.item.ID) this.clearfromeditForm();
     } else {
-      if (this.userdata.ID != "") this.clearForm();
+      this.userdata.ID == "";
+      if (
+        this.userdata.ID != "" ||
+        this.userdata.ID == undefined ||
+        this.userdata.ID == null
+      ) {
+        this.clearForm();
+      }
     }
   }
 };

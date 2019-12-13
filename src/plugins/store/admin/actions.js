@@ -51,7 +51,7 @@ export default {
             pass: payload.password,
             image: payload.image
         }
-        console.log(useradd)
+        console.log("añadir", useradd)
         if (Token) {
             commit("ui_m_loading", true);
             commit("ui_m_error", false);
