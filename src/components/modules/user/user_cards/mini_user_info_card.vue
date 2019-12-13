@@ -25,37 +25,8 @@
           <span>Favoritos</span>
         </v-tooltip>-->
 
-        <v-tooltip bottom>
-          <template v-slot:activator="{ on }">
-            <span v-on="on">
-              <app-user-dialog-edit :udata="cuser"></app-user-dialog-edit>
-            </span>
-          </template>
-          <span>Editar Usuario</span>
-        </v-tooltip>
-
-        <span v-if="cuser.ID != master">
-          <v-tooltip bottom>
-            <template v-slot:activator="{ on }">
-              <span v-on="on">
-                <app-user-dialog-delete :udata="cuser" :off="cuser.ID == user.ID"></app-user-dialog-delete>
-              </span>
-            </template>
-            <span>Eliminar Usuario</span>
-          </v-tooltip>
-        </span>
-        <span v-else>
-          <v-tooltip bottom>
-            <template v-slot:activator="{ on }">
-              <span v-on="on">
-                <v-btn icon :disabled="true">
-                  <v-icon>delete</v-icon>
-                </v-btn>
-              </span>
-            </template>
-            <span>Eliminar Usuario</span>
-          </v-tooltip>
-        </span>
+        <app-user-form action="edit" :item="cuser"></app-user-form>
+        <app-user-form action="del" :item="cuser"></app-user-form>
 
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
@@ -88,8 +59,7 @@
 </template>
 
 <script>
-import cmpEditUser from "@/components/modules/user/dialogs/edit_user_dialog";
-import cmpDelUser from "@/components/modules/user/dialogs/del_user_dialog";
+import cmpUserForm from "@/components/modules/user/dialogs/user_form.vue";
 
 export default {
   props: ["cuser"],
@@ -120,8 +90,7 @@ export default {
     }
   },
   components: {
-    "app-user-dialog-edit": cmpEditUser,
-    "app-user-dialog-delete": cmpDelUser
+    "app-user-form": cmpUserForm
   }
 };
 </script>

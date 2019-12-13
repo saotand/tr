@@ -16,9 +16,15 @@
           placeholder="Buscar"
         ></v-text-field>
       </app-tooltip>
+
       <app-tooltip tooltip="Actualizar" bottom v-if="panel.refresh">
         <v-btn icon @click="refresh">
           <v-icon dark class="text-white">fa-refresh</v-icon>
+        </v-btn>
+      </app-tooltip>
+      <app-tooltip tooltip="Actualizar" bottom v-if="panel.refresh">
+        <v-btn icon @click="refresh">
+          <v-icon dark class="text-white"></v-icon>
         </v-btn>
       </app-tooltip>
       <app-user-form v-if="!loading"></app-user-form>
@@ -43,7 +49,7 @@ export default {
         search: true,
         refresh: true
       },
-      details: true,
+      details: false,
       search: "",
       tottlelist: false
     };
