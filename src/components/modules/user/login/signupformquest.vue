@@ -110,6 +110,7 @@
                     v-model="userdata.email"
                     hint="Tu correo será verificado"
                     required
+                    :rules="[emailmessage,emailused]"
                     @blur="onBlurEmail(userdata.email)"
                   ></v-text-field>
                 </v-flex>
@@ -386,6 +387,7 @@
                     type="email"
                     v-model="userdata.email"
                     hint="Tu correo será verificado"
+                    :rules="[emailmessage,emailused]"
                     required
                     @blur="onBlurEmail(userdata.email)"
                   ></v-text-field>
@@ -841,6 +843,7 @@ export default {
     tabs: 0,
     pasos: 0,
     docused: false,
+    emailused: false,
     userdata: {
       redirect: false,
       email: "saotand@gmail.com",
@@ -920,7 +923,9 @@ export default {
           this.userdata.doc.length < 7 ||
           this.pml ||
           this.cpp ||
-          this.userdata.phone.length <= 10;
+          this.userdata.phone.length <= 10 ||
+          this.emailused != "" ||
+          this.docused != "";
       } else if (this.pasos == 3) {
         condition =
           this.userdata.seller.name.length < 3 ||
