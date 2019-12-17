@@ -452,7 +452,9 @@ export default {
     edited() {
       let origen = this.item;
       let destino = this.userdata;
-      return (
+      let compdata = false;
+
+      compdata =
         origen.name == destino.name &&
         origen.last == destino.last &&
         origen.doc == destino.doc &&
@@ -462,8 +464,10 @@ export default {
         origen.phone == destino.phone &&
         origen.level == destino.level &&
         origen.birth == destino.birth &&
-        origen.image == destino.image
-      );
+        origen.image == destino.image &&
+        destino.password == "12345678";
+
+      return compdata;
     },
     computedDateFormatted() {
       return this.formatDate(this.birthdate);
