@@ -35,51 +35,14 @@
           <app-user-form action="edit" :item="props.item"></app-user-form>
           <app-user-form action="del" :item="props.item"></app-user-form>
 
-          <!--
-          <span>
-            <v-tooltip bottom>
-              <template v-slot:activator="{ on }">
-                <span v-on="on">
-                  <app-user-dialog-edit :udata="props.item"></app-user-dialog-edit>
-                </span>
-              </template>
-              <span>Editar Usuario</span>
-            </v-tooltip>
-          </span>
-          <span v-if="props.item.ID != master">
-            <v-tooltip bottom>
-              <template v-slot:activator="{ on }">
-                <span v-on="on">
-                  <app-user-dialog-delete :udata="props.item" :off="user.ID == props.item.ID"></app-user-dialog-delete>
-                </span>
-              </template>
-              <span>Eliminar Usuario</span>
-            </v-tooltip>
-          </span>
-          
-          <span v-else>
-            <v-tooltip bottom>
-              <template v-slot:activator="{ on }">
-                <span v-on="on">
-                  <v-btn icon :disabled="true">
-                    <v-icon>fa-trash</v-icon>
-                  </v-btn>
-                </span>
-              </template>
-              <span>Eliminar Usuario</span>
-            </v-tooltip>
-          </span>
-          -->
-          <span style="overflow:hidden">
-            <v-tooltip bottom>
-              <template v-slot:activator="{ on }">
-                <span v-on="on">
-                  <app-popupuserinfo :user="props.item"></app-popupuserinfo>
-                </span>
-              </template>
-              <span>Mostrar detalles</span>
-            </v-tooltip>
-          </span>
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on }">
+              <span v-on="on">
+                <app-popupuserinfo :user="props.item"></app-popupuserinfo>
+              </span>
+            </template>
+            <span>Mostrar detalles</span>
+          </v-tooltip>
         </td>
       </template>
     </v-data-table>

@@ -35,7 +35,7 @@ export default {
   props: ["users", "search"],
   data() {
     return {
-      pagination: 0,
+      pagination: {},
       rowsPerPageItems: [12, 24, 48, 96, { text: "Todos", value: -1 }]
     };
   },

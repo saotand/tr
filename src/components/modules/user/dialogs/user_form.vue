@@ -45,7 +45,7 @@
                   <v-layout>
                     <v-flex xs12>
                       <v-responsive :aspect-ratio="2/3" max-height="500" max-width="500">
-                        <img :src="userdata.image" class="img-responsive" />
+                        <img :src="tempimage" class="img-responsive" />
                       </v-responsive>
                     </v-flex>
                   </v-layout>
@@ -480,9 +480,6 @@ export default {
     darkset() {
       return this.$store.getters.ui_g_dark;
     },
-    readyform() {
-      return false;
-    },
     minlength() {
       return this.userdata.password.length < 6 ? "Minimo 6 caracteres" : false;
     },
@@ -596,7 +593,7 @@ export default {
           birth: this.userdata.birth,
           level: this.userdata.level
         };
-
+        if (!this.cpass) delete editdata.password;
         this.$store.dispatch("admin_a_edit_users", editdata);
       } else if (this.action == "del") {
         let deldata = this.userdata.ID;

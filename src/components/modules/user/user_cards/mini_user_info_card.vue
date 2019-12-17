@@ -3,8 +3,18 @@
     <v-list>
       <v-list-tile avatar>
         <v-list-tile-avatar>
-          <!--<v-img src="@/assets/sin_foto.png" :alt="user.name"></v-img>-->
-          <img src="@/assets/sin_foto.png" :alt="cuser.name+' '+cuser.last" class="img-responsive" />
+          <img
+            v-if="cuser.image"
+            :src="baseurl+cuser.image"
+            :alt="cuser.name+' '+cuser.last"
+            class="img-responsive"
+          />
+          <img
+            v-else
+            src="@/assets/sin_foto.png"
+            :alt="cuser.name+' '+cuser.last"
+            class="img-responsive"
+          />
         </v-list-tile-avatar>
         <v-list-tile-content>
           <v-list-tile-title>{{cuser.name}}</v-list-tile-title>
@@ -27,7 +37,6 @@
 
         <app-user-form action="edit" :item="cuser"></app-user-form>
         <app-user-form action="del" :item="cuser"></app-user-form>
-
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
             <span v-on="on">
@@ -36,6 +45,7 @@
           </template>
           <span>Mostrar detalles</span>
         </v-tooltip>
+
         <!--
         <v-tooltip top>
           <template v-slot:activator="{ on }">
@@ -59,7 +69,9 @@
 </template>
 
 <script>
+import axios from "axios";
 import cmpUserForm from "@/components/modules/user/dialogs/user_form.vue";
+import cmpPopupUserInfo from "@/components/modules/user/popup_profile.vue";
 
 export default {
   props: ["cuser"],
@@ -80,6 +92,9 @@ export default {
   computed: {
     user() {
       return this.$store.getters.user;
+    },
+    baseurl() {
+      return axios.defaults.baseURL;
     }
   },
   methods: {
@@ -90,7 +105,8 @@ export default {
     }
   },
   components: {
-    "app-user-form": cmpUserForm
+    "app-user-form": cmpUserForm,
+    "app-popupuserinfo": cmpPopupUserInfo
   }
 };
 </script>

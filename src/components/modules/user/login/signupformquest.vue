@@ -110,6 +110,7 @@
                     v-model="userdata.email"
                     hint="Tu correo será verificado"
                     required
+                    @blur="onBlurEmail(userdata.email)"
                   ></v-text-field>
                 </v-flex>
                 <v-flex xs12 md3>
@@ -170,8 +171,10 @@
                     type="text"
                     v-model="userdata.doc"
                     hint="Numero de documento"
+                    :rules="[v => !!v || 'Coloca tu ' + doctypelabel ,docused]"
                     mask="########"
                     required
+                    @blur="onBlurDoc(userdata.doc)"
                   ></v-text-field>
                 </v-flex>
                 <v-flex xs6>
@@ -384,6 +387,7 @@
                     v-model="userdata.email"
                     hint="Tu correo será verificado"
                     required
+                    @blur="onBlurEmail(userdata.email)"
                   ></v-text-field>
                 </v-flex>
                 <v-flex xs12 md3>
@@ -442,8 +446,10 @@
                     type="text"
                     v-model="userdata.doc"
                     hint="Numero de documento"
+                    :rules="[v => !!v || 'Coloca tu ' + doctypelabel ,docused]"
                     mask="########"
                     required
+                    @blur="onBlurDoc(userdata.doc)"
                   ></v-text-field>
                 </v-flex>
 
@@ -820,13 +826,11 @@
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
-    <code>{{userdata}}</code>
   </span>
 </template>
 
 <script>
-/* eslint-disable */
-import Axios from "axios";
+import axios from "axios";
 export default {
   data: () => ({
     infoallparts: "Sera notificado por todos los tipos de partes.",
@@ -836,6 +840,7 @@ export default {
     showtabs: true,
     tabs: 0,
     pasos: 0,
+    docused: false,
     userdata: {
       redirect: false,
       email: "saotand@gmail.com",
@@ -888,13 +893,13 @@ export default {
     partscheck() {
       let check = true;
       this.subparts.forEach(spart => {
-        this.userdata.profile.forEach((profile, index) => {
+        this.userdata.profile.forEach(profile => {
           if (spart.value == profile) {
             check = false;
           }
         });
-        spart.childs.forEach((profilec, index) => {
-          this.userdata.profile.forEach((profilex, index) => {
+        spart.childs.forEach(profilec => {
+          this.userdata.profile.forEach(profilex => {
             if (profilec.value == profilex) {
               check = false;
             }
@@ -904,8 +909,9 @@ export default {
       return check;
     },
     proxpaso() {
+      let condition;
       if (this.pasos == 2) {
-        return (
+        condition =
           !this.emailformatted ||
           this.userdata.name.length < 3 ||
           this.userdata.last.length < 3 ||
@@ -914,18 +920,17 @@ export default {
           this.userdata.doc.length < 7 ||
           this.pml ||
           this.cpp ||
-          this.userdata.phone.length <= 10
-        );
+          this.userdata.phone.length <= 10;
       } else if (this.pasos == 3) {
-        return (
+        condition =
           this.userdata.seller.name.length < 3 ||
           this.userdata.seller.nac.length == 0 ||
           this.userdata.seller.rif.length < 9 ||
           this.userdata.seller.phone.length <= 10 ||
           this.userdata.seller.city.length == 0 ||
-          this.userdata.seller.address == 0
-        );
+          this.userdata.seller.address == 0;
       }
+      return condition;
     },
     emailformatted() {
       let regexemail = /^[a-zA-Z0-9!#$&*?^{}˜.Çç-]+(\.[a-zA-Z0-9!#$&*?^{}˜.Çç-]+)*@([a-zA-Z0-9]+([a-zA-Z0-9-]*)\.)+[a-zA-Z]+$/;
@@ -1046,14 +1051,14 @@ export default {
       this.birthdateFormatted = this.formatDate(this.birthdate);
       this.userdata.birth = this.birthdate;
     },
-    "userdata.profile"(value) {
+    "userdata.profile"() {
       if (this.tabs > 0) {
         this.actsectab();
       }
       this.subparts.forEach((part, index) => {
-        this.userdata.profile.forEach((item, indexpf) => {
+        this.userdata.profile.forEach(item => {
           if (item == part.value) {
-            this.subparts[index].childs.forEach((spart, indexch) => {
+            this.subparts[index].childs.forEach(spart => {
               this.userdata.profile.find((pfdata, indexpf) => {
                 if (pfdata) {
                   if (pfdata == spart.value) {
@@ -1070,7 +1075,7 @@ export default {
       if (value) {
         let br = this.brands;
         let pf = this.userdata.profile;
-        br.forEach((br_elm, spindex) => {
+        br.forEach(br_elm => {
           pf.forEach((elm, index) => {
             if (elm == br_elm.value) {
               this.userdata.profile.splice(index, 1);
@@ -1107,7 +1112,8 @@ export default {
       this.sectab = true;
     },
     profile_brands() {
-      Axios.get("ask/notilist/brands")
+      axios
+        .get("ask/notilist/brands")
         .then(response => {
           const list = response.data.data;
           this.PH.brands = list;
@@ -1119,11 +1125,13 @@ export default {
           } else {
             message = error;
           }
+          this.$store.dispatch("ui_a_error", message);
         })
         .then(() => {});
     },
     profile_subparts() {
-      Axios.get("ask/notilist/subparts")
+      axios
+        .get("ask/notilist/subparts")
         .then(response => {
           const list = response.data.data;
           this.PH.subparts = list;
@@ -1135,6 +1143,7 @@ export default {
           } else {
             message = error;
           }
+          this.$store.dispatch("ui_a_error", message);
         })
         .then(() => {});
     },
@@ -1213,52 +1222,64 @@ export default {
       this.userdata.created = "";
       this.userdata.active = "";
       this.userdata.verified = "";
+    },
+    onBlurDoc(cData) {
+      let data = { doc: cData };
+      let url = "user/check";
+      axios
+        .post(url, data)
+        .then(response => {
+          let exists = response.data.data;
+          if (exists) {
+            this.docused = "Ya Existe";
+          } else {
+            this.docused = false;
+          }
+        })
+        .catch(error => {
+          let message = "";
+          if (error.response != undefined) {
+            message = error.response.data.error.message;
+            this.$store.dispatch("ui_a_error", message);
+          } else {
+            message = error;
+            //commit("ui_m_warning", message);
+          }
+        })
+        .then();
+    },
+    onBlurEmail(cData) {
+      let data = { email: cData };
+      let url = "user/check";
+      axios
+        .post(url, data)
+        .then(response => {
+          let exists = response.data.data;
+          if (exists) {
+            this.emailused = "Ya Existe";
+          } else {
+            this.emailused = false;
+          }
+        })
+        .catch(error => {
+          let message = "";
+          if (error.response != undefined) {
+            message = error.response.data.error.message;
+          } else {
+            message = error;
+          }
+          this.$store.dispatch("ui_a_error", message);
+        })
+        .then();
     }
   },
   created() {
     this.birthdate = this.maxdate;
     this.birthdateFormatted = this.formatDate(this.maxdate);
     this.profile_brands();
-    //this.profile_models();
     this.profile_subparts();
-    //this.profile_parts();
   }
 };
-
-/*
-    profile_parts() {
-      Axios.get("ask/notilist/parts")
-        .then(response => {
-          const list = response.data.data;
-          this.PH.parts = list;
-        })
-        .catch(error => {
-          let message = "";
-          if (error.response != undefined) {
-            message = error.response.data.error.message;
-          } else {
-            message = error;
-          }
-        })
-        .then(() => {});
-    },*/
-/*
-    profile_models() {
-      Axios.get("ask/notilist/models")
-        .then(response => {
-          const list = response.data.data;
-          this.PH.models = list;
-        })
-        .catch(error => {
-          let message = "";
-          if (error.response != undefined) {
-            message = error.response.data.error.message;
-          } else {
-            message = error;
-          }
-        })
-        .then(() => {});
-    }, */
 </script>
 
 <style>

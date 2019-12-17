@@ -86,6 +86,7 @@ export default {
         let ID = payload.ID;
         let url = '/user/edit/' + ID + '?format=json';
         let useredit = {
+            image: payload.image,
             email: payload.email,
             name: payload.name,
             last: payload.last,

@@ -1,5 +1,5 @@
 <template>
-  <v-card :draggable="draggable">
+  <v-card class="roundedbox" :draggable="draggable">
     <app-loading v-if="!noloading" :loading="loading"></app-loading>
     <template>
       <v-toolbar dense :color="color" :dark="dark" v-if="!notitle" :fixed="fixed" prominent>
@@ -16,6 +16,10 @@
       <app-alert @dismissed="onDismissed" :text="error"></app-alert>
     </span>
     <slot></slot>
+    <v-divider></v-divider>
+    <v-divider></v-divider>
+    <v-divider></v-divider>
+    <v-divider></v-divider>
   </v-card>
 </template>
 
@@ -78,5 +82,9 @@ export default {
 </script>
 
 <style>
+.roundedbox {
+  border-radius: 10px;
+  overflow: hidden;
+}
 </style>
 

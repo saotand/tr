@@ -23,8 +23,8 @@
         </v-btn>
       </app-tooltip>
       <app-tooltip tooltip="Actualizar" bottom v-if="panel.refresh">
-        <v-btn icon @click="refresh">
-          <v-icon dark class="text-white"></v-icon>
+        <v-btn icon @click="cview">
+          <v-icon dark class="text-white">{{this.details?'fa-th-large':'fa-th-list'}}</v-icon>
         </v-btn>
       </app-tooltip>
       <app-user-form v-if="!loading"></app-user-form>
@@ -49,7 +49,7 @@ export default {
         search: true,
         refresh: true
       },
-      details: false,
+      details: true,
       search: "",
       tottlelist: false
     };
@@ -69,6 +69,9 @@ export default {
     refresh() {
       this.$store.dispatch("admin_a_set_users");
       this.$store.dispatch("ui_a_clear_error");
+    },
+    cview() {
+      this.details = !this.details;
     }
   },
   updated() {
