@@ -3183,3 +3183,36 @@
 .fa-fonticons:before {
   content: "\f280"
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #525252;
+  /*border: thin solid #000053;*/
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1) inset;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ad012c;
+  border: thin solid #525252;
+}
+
+::-moz-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-moz-scrollbar-track {
+  background: #525252;
+  /*border: thin solid #000053;*/
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1) inset;
+}
+
+
+::-moz-scrollbar-thumb {
+  background: #ad012c;
+  border: thin solid #525252;
+}

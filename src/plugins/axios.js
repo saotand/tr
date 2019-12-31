@@ -1,4 +1,4 @@
-"use strict";
+'use strict'
 
 /* eslint-disable */
 import Vue from "vue";
@@ -27,7 +27,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 let config = {
   //baseURL: process.env.baseURL || process.env.apiUrl || "http://api.carparts/",
   timeout: 60 * 1000, // Timeout
-  withCredentials: false // Check cross-site Access-Control
+  withCredentials: true // Check cross-site Access-Control
 };
 
 const _axios = axios.create(config);
