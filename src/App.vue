@@ -1,5 +1,8 @@
 <template>
-  <v-app :dark="darkset" id="inspire">
+  <v-app
+    :dark="darkset"
+    id="inspire"
+  >
     <app-menu :menuitems="mainMenu"></app-menu>
     <v-content :class="darkset?'bgcontainerdark':'bgcontainer'">
       <router-view></router-view>
@@ -21,7 +24,11 @@
             <h2>{{ error }}</h2>
           </v-flex>
           <v-flex xs1>
-            <v-btn icon @click="snackbar = false" @input="closesnack">
+            <v-btn
+              icon
+              @click="snackbar = false"
+              @input="closesnack"
+            >
               <v-icon>fa-times</v-icon>
             </v-btn>
           </v-flex>
@@ -33,48 +40,48 @@
 
 <script>
 export default {
-  data: () => ({
-    timeout: 10000,
-    mode: "vertical",
-    snackbar: false,
-    dialog: false,
-    drawer: false
-  }),
-  computed: {
-    error() {
-      return this.$store.getters.ui_g_error;
+    data: () => ({
+        timeout: 10000,
+        mode: 'vertical',
+        snackbar: false,
+        dialog: false,
+        drawer: false
+    }),
+    computed: {
+        error () {
+            return this.$store.getters.ui_g_error;
+        },
+        color () {
+            return this.$store.getters.ui_g_ecolor;
+        },
+        user () {
+            return this.$store.getters.user_g_user;
+        },
+        menu () {
+            return this.$store.getters.ui_g_menu;
+        },
+        mainMenu () {
+            let u = this.user ? 0 : 1;
+            return this.menu[u];
+        },
+        darkset () {
+            return this.$store.getters.ui_g_dark;
+        }
     },
-    color() {
-      return this.$store.getters.ui_g_ecolor;
+    watch: {
+        error (val) {
+            if (val) {
+                this.snackbar = true;
+            } else {
+                this.snackbar = false;
+            }
+        }
     },
-    user() {
-      return this.$store.getters.user_g_user;
-    },
-    menu() {
-      return this.$store.getters.ui_g_menu;
-    },
-    mainMenu() {
-      let u = this.user ? 0 : 1;
-      return this.menu[u];
-    },
-    darkset() {
-      return this.$store.getters.ui_g_dark;
+    methods: {
+        closesnack () {
+            alert('close');
+        }
     }
-  },
-  watch: {
-    error(val) {
-      if (val) {
-        this.snackbar = true;
-      } else {
-        this.snackbar = false;
-      }
-    }
-  },
-  methods: {
-    closesnack() {
-      alert("close");
-    }
-  }
 };
 </script>
 

@@ -1,5 +1,8 @@
 <template>
-  <app-panel dark noerror>
+  <app-panel
+    dark
+    noerror
+  >
     <template slot="title">
       <v-icon left>{{form.icon}}</v-icon>
       {{form.title}}
@@ -11,10 +14,21 @@
     </template>
     <v-card-text>
       <form @submit.prevent="onsubmit">
-        <img v-if="image" :src="image">
-        <app-file-upload :name="fileimput" color="primary" accept="image/*" @base64="get64encode"></app-file-upload>
+        <img
+          v-if="image"
+          :src="image"
+        >
+        <app-file-upload
+          :name="fileimput"
+          color="primary"
+          accept="image/*"
+          @base64="get64encode"
+        ></app-file-upload>
         <v-text-field v-model="text"></v-text-field>
-        <v-btn color="primary" type="submit">Enviar</v-btn>
+        <v-btn
+          color="primary"
+          type="submit"
+        >Enviar</v-btn>
       </form>
       <code>{{image}}</code>
     </v-card-text>
@@ -35,7 +49,7 @@ export default {
     text: "Mensaje"
   }),
   methods: {
-    onsubmit() {
+    onsubmit () {
       let url = "upload";
       let msg = { _image: this.image, text: this.text };
       Axios.post(url, msg)
@@ -49,18 +63,18 @@ export default {
           console.log("done");
         });
     },
-    getfile(event) {
+    getfile (event) {
       if (event) {
         let image = event.target.files[0];
         this.image = image;
         console.log(event.target.files);
       }
     },
-    get64encode(base64) {
+    get64encode (base64) {
       this.image = base64;
     }
   },
-  updated() {
+  updated () {
     console.log("updated address");
   }
 };

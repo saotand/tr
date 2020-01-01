@@ -35,8 +35,14 @@
           <span>Favoritos</span>
         </v-tooltip>-->
 
-        <app-user-form action="edit" :item="cuser"></app-user-form>
-        <app-user-form action="del" :item="cuser"></app-user-form>
+        <app-user-form
+          action="edit"
+          :item="cuser"
+        ></app-user-form>
+        <app-user-form
+          action="del"
+          :item="cuser"
+        ></app-user-form>
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
             <span v-on="on">
@@ -69,45 +75,45 @@
 </template>
 
 <script>
-import axios from "axios";
-import cmpUserForm from "@/components/modules/user/dialogs/user_form.vue";
-import cmpPopupUserInfo from "@/components/modules/user/popup_profile.vue";
+import axios from 'axios';
+import cmpUserForm from '@/components/modules/user/dialogs/user_form.vue';
+import cmpPopupUserInfo from '@/components/modules/user/popup_profile.vue';
 
 export default {
-  props: ["cuser"],
-  data() {
-    return {
-      master: "100000000000000000000000000001",
-      levels: [
-        "Usuario",
-        "vendedor",
-        "Mayorista",
-        "Agente",
-        "Supervisor",
-        "Administrador"
-      ],
-      fav: false
-    };
-  },
-  computed: {
-    user() {
-      return this.$store.getters.user;
+    props: ['cuser'],
+    data () {
+        return {
+            master: '100000000000000000000000000001',
+            levels: [
+                'Usuario',
+                'vendedor',
+                'Mayorista',
+                'Agente',
+                'Supervisor',
+                'Administrador'
+            ],
+            fav: false
+        };
     },
-    baseurl() {
-      return axios.defaults.baseURL;
+    computed: {
+        user () {
+            return this.$store.getters.user;
+        },
+        baseurl () {
+            return axios.defaults.baseURL;
+        }
+    },
+    methods: {
+        formatDate (date) {
+            if (!date) return null;
+            const [year, month, day] = date.split('-');
+            return `${day}/${month}/${year}`;
+        }
+    },
+    components: {
+        'app-user-form': cmpUserForm,
+        'app-popupuserinfo': cmpPopupUserInfo
     }
-  },
-  methods: {
-    formatDate(date) {
-      if (!date) return null;
-      const [year, month, day] = date.split("-");
-      return `${day}/${month}/${year}`;
-    }
-  },
-  components: {
-    "app-user-form": cmpUserForm,
-    "app-popupuserinfo": cmpPopupUserInfo
-  }
 };
 </script>
 

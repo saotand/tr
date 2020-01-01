@@ -1,8 +1,15 @@
 <template>
   <v-layout v-if="classic">
-    <v-flex xs12 sm6 offset-sm3>
+    <v-flex
+      xs12
+      sm6
+      offset-sm3
+    >
       <v-card>
-        <v-card-title dark class="primary">
+        <v-card-title
+          dark
+          class="primary"
+        >
           <h1 style="color:white">Registrate</h1>
         </v-card-title>
         <v-container grid-list-md>
@@ -101,7 +108,10 @@
               </v-flex>
             </v-layout>
             <v-layout row>
-              <v-flex xs6 v-show="showlevel">
+              <v-flex
+                xs6
+                v-show="showlevel"
+              >
                 <v-select
                   item-value="value"
                   v-model="userdata.level"
@@ -152,16 +162,32 @@
                       v-on="on"
                     ></v-text-field>
                   </template>
-                  <v-date-picker locale="es-es" v-model="birthdate" no-title @input="menu1 = false"></v-date-picker>
+                  <v-date-picker
+                    locale="es-es"
+                    v-model="birthdate"
+                    no-title
+                    @input="menu1 = false"
+                  ></v-date-picker>
                 </v-menu>
               </v-flex>
             </v-layout>
             <v-layout row>
-              <v-flex xs12 align-center>
+              <v-flex
+                xs12
+                align-center
+              >
                 <center>
-                  <v-btn class="primary" type="submit" :disabled="loading" :loading="loading">
+                  <v-btn
+                    class="primary"
+                    type="submit"
+                    :disabled="loading"
+                    :loading="loading"
+                  >
                     Registrar
-                    <span slot="loader" class="custom-loader">
+                    <span
+                      slot="loader"
+                      class="custom-loader"
+                    >
                       <v-icon light>cached</v-icon>
                     </span>
                   </v-btn>

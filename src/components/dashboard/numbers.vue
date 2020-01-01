@@ -1,8 +1,18 @@
 <template>
-  <v-card :color="color" style="overflow:hidden;" height="186px">
+  <v-card
+    :color="color"
+    style="overflow:hidden;"
+    height="186px"
+  >
     <v-container style="padding:0;margin:0;">
       <v-layout>
-        <v-flex xs8 sm8 md8 lg8 xl8>
+        <v-flex
+          xs8
+          sm8
+          md8
+          lg8
+          xl8
+        >
           <div style="padding:15px; height:138px; ">
             <div style="margin:0px; font-size:18px">
               <b>{{title}}</b>
@@ -22,7 +32,10 @@
           style="text-align:right;margin-top:15px; margin-right:10px; height:100px"
         >
           <v-icon size="100">{{icon}}</v-icon>
-          <v-icon class="transparent iconscale" style="position:relative;z-index:1">{{icon}}</v-icon>
+          <v-icon
+            class="transparent iconscale"
+            style="position:relative;z-index:1"
+          >{{icon}}</v-icon>
         </v-flex>
       </v-layout>
       <v-layout
@@ -30,11 +43,21 @@
         class="seccolor"
         style="margin:0px; padding:0px; position:relative; z-index:1"
       >
-        <v-flex xs12 class="baselinebar">
+        <v-flex
+          xs12
+          class="baselinebar"
+        >
           <center>
-            <v-btn flat block style="margin:0;padding:0;text-transform:capitalize !important;">
+            <v-btn
+              flat
+              block
+              style="margin:0;padding:0;text-transform:capitalize !important;"
+            >
               Más info
-              <v-icon small right>fa-arrow-circle-right</v-icon>
+              <v-icon
+                small
+                right
+              >fa-arrow-circle-right</v-icon>
             </v-btn>
           </center>
         </v-flex>
@@ -45,32 +68,32 @@
 
 <script>
 export default {
-  props: {
-    url: {
-      default: "/",
-      type: String,
-      required: false
-    },
-    title: {
-      default: "title",
-      type: String,
-      required: false
-    },
-    icon: {
-      default: "fa-home",
-      type: String,
-      required: false
-    },
-    color: {
-      default: "",
-      type: String,
-      required: false
-    },
-    value: {
-      default: "N/A",
-      required: false
+    props: {
+        url: {
+            default: '/',
+            type: String,
+            required: false
+        },
+        title: {
+            default: 'title',
+            type: String,
+            required: false
+        },
+        icon: {
+            default: 'fa-home',
+            type: String,
+            required: false
+        },
+        color: {
+            default: '',
+            type: String,
+            required: false
+        },
+        value: {
+            default: 'N/A',
+            required: false
+        }
     }
-  }
 };
 </script>
 

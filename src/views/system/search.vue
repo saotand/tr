@@ -5,7 +5,7 @@
 <script>
 /* eslint-disable */
 export default {
-  updated() {
+  updated () {
     console.log("updated search");
   }
 };

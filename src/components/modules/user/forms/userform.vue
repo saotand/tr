@@ -104,11 +104,22 @@
       </v-flex>
     </v-layout>
     <v-layout row>
-      <v-flex xs12 align-center>
+      <v-flex
+        xs12
+        align-center
+      >
         <center>
-          <v-btn class="primary" type="submit" :disabled="loading" :loading="loading">
+          <v-btn
+            class="primary"
+            type="submit"
+            :disabled="loading"
+            :loading="loading"
+          >
             Registrar
-            <span slot="loader" class="custom-loader">
+            <span
+              slot="loader"
+              class="custom-loader"
+            >
               <v-icon light>cached</v-icon>
             </span>
           </v-btn>
@@ -119,43 +130,43 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
-      userdata: {
-        name: "",
-        last: "",
-        doctype: "",
-        nac: "",
-        doc: "",
-        email: "",
-        password: "",
-        confirmpassword: "",
-        business: "P",
-        phone: ""
-      },
-      docs: ["Cedula", "R.I.F.", "Pasaporte"],
-      nacs: ["V", "E", "J", "G"]
-    };
-  },
-  computed: {
-    minlength() {
-      return this.password.length < 6 ? "Minimo 6 caracteres" : false;
+    data () {
+        return {
+            userdata: {
+                name: '',
+                last: '',
+                doctype: '',
+                nac: '',
+                doc: '',
+                email: '',
+                password: '',
+                confirmpassword: '',
+                business: 'P',
+                phone: ''
+            },
+            docs: ['Cedula', 'R.I.F.', 'Pasaporte'],
+            nacs: ['V', 'E', 'J', 'G']
+        };
     },
-    comparePasswords() {
-      return this.userdata.password != this.userdata.confirmpassword
-        ? "Las contraseñas deben ser iguales"
-        : false;
-    },
-    user() {
-      return this.$store.getters.user;
-    },
-    error() {
-      return this.$store.getters.error;
-    },
-    loading() {
-      return this.$store.getters.loading;
+    computed: {
+        minlength () {
+            return this.password.length < 6 ? 'Minimo 6 caracteres' : false;
+        },
+        comparePasswords () {
+            return this.userdata.password != this.userdata.confirmpassword
+                ? 'Las contraseñas deben ser iguales'
+                : false;
+        },
+        user () {
+            return this.$store.getters.user;
+        },
+        error () {
+            return this.$store.getters.error;
+        },
+        loading () {
+            return this.$store.getters.loading;
+        }
     }
-  }
 };
 </script>
 <style>

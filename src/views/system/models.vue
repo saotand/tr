@@ -1,11 +1,17 @@
 <template>
-  <app-panel dark noerror>
+  <app-panel
+    dark
+    noerror
+  >
     <template slot="title">
       <v-icon left>{{panel.icon}}</v-icon>
       <b>{{panel.title}}</b>
     </template>
     <template slot="button">
-      <v-tooltip bottom v-if="panel.search">
+      <v-tooltip
+        bottom
+        v-if="panel.search"
+      >
         <template v-slot:activator="{ on }">
           <span v-on="on">
             <v-text-field
@@ -22,10 +28,20 @@
         <span>Busqueda</span>
       </v-tooltip>
 
-      <v-tooltip bottom v-if="panel.refresh">
+      <v-tooltip
+        bottom
+        v-if="panel.refresh"
+      >
         <template v-slot:activator="{ on }">
-          <v-btn icon v-on="on" @click="refresh">
-            <v-icon dark class="text-white">fa-refresh</v-icon>
+          <v-btn
+            icon
+            v-on="on"
+            @click="refresh"
+          >
+            <v-icon
+              dark
+              class="text-white"
+            >fa-refresh</v-icon>
           </v-btn>
         </template>
         <span>Actualizar</span>
@@ -40,13 +56,17 @@
         <span>Nueva Marca</span>
       </v-tooltip>
     </template>
-    <app-models-list :items="models" :search="search" :brands="brands"></app-models-list>
+    <app-models-list
+      :items="models"
+      :search="search"
+      :brands="brands"
+    ></app-models-list>
   </app-panel>
 </template>
 <script>
 /* eslint-disable */
 export default {
-  data() {
+  data () {
     return {
       panel: {
         title: "Modelos",
@@ -62,33 +82,33 @@ export default {
     };
   },
   computed: {
-    user() {
+    user () {
       return this.$store.getters.user_g_user;
     },
-    brands() {
+    brands () {
       return this.$store.getters.admin_g_brands;
     },
-    models() {
+    models () {
       return this.$store.getters.admin_g_models;
     },
-    loading() {
+    loading () {
       return this.$store.getters.ui_g_loading;
     },
-    error() {
+    error () {
       return this.$store.getters.ui_g_error;
     }
   },
   methods: {
-    onDismissed() {
+    onDismissed () {
       this.$store.dispatch("ui_a_clear_error");
     },
-    refresh() {
+    refresh () {
       this.$store.dispatch("admin_a_set_models");
       //this.$store.dispatch("admin_a_set_brands");
       this.$store.dispatch("ui_a_clear_error");
     }
   },
-  created() {
+  created () {
     if (this.brands.length < 1) {
       this.$store.dispatch("admin_a_set_brands");
     }
@@ -96,7 +116,7 @@ export default {
       this.$store.dispatch("admin_a_set_models");
     }
   },
-  updated() {
+  updated () {
     console.log("updated models");
   }
 };

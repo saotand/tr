@@ -7,7 +7,9 @@ import jwt from "jsonwebtoken";
 const dctr = "Cpvz13A1otc";
 
 export default {
-  user_a_signin: ({ commit }, payload) => {
+  user_a_signin: ({
+    commit
+  }, payload) => {
     commit("ui_m_loading", true);
     commit("ui_m_error", false);
     let URL = "/login?format=json";
@@ -44,7 +46,9 @@ export default {
         commit("ui_m_loading", false);
       });
   },
-  user_a_signup: ({ commit }, payload) => {
+  user_a_signup: ({
+    commit
+  }, payload) => {
     commit("ui_m_loading", true);
     commit("ui_m_error", false);
     let userdata = {
@@ -93,11 +97,17 @@ export default {
         commit("ui_m_loading", false);
       });
   },
-  user_a_signout: ({ commit }) => {
+  user_a_signout: ({
+    commit
+  }) => {
     commit("ui_m_loading", true);
     commit("ui_m_error", false);
     const Token = sessionStorage.getItem("token");
-    const options = { headers: { "Authorization": Token } };
+    const options = {
+      headers: {
+        "Authorization": Token
+      }
+    };
     const URL = '/logout';
     if (Token) {
       axios.post(URL, null, options)
@@ -112,21 +122,27 @@ export default {
         })
         .then(() => {
           commit("ui_m_loading", false);
-        })
+        });
     } else {
 
     }
   },
-  user_a_autosignin: ({ commit }) => {
+  user_a_autosignin: ({
+    commit
+  }) => {
     const Token = sessionStorage.getItem("token");
-    const options = { headers: { "Authorization": Token } };
+    const options = {
+      headers: {
+        "Authorization": Token
+      }
+    };
     if (Token) {
       commit("ui_m_loading", true);
       commit("ui_m_error", false);
       axios
         .post('/autoload?format=json', null, options)
         .then(response => {
-          let user = response.data.data.autocargado
+          let user = response.data.data.autocargado;
           if (user) {
             // Desencriptamos el token para guardarlo en memoria de session del browser
             let tokentmp = jwt.verify(Token, dctr);
@@ -150,10 +166,12 @@ export default {
           }
         }).then(() => {
           commit('ui_m_loading', false);
-        })
+        });
     }
   },
-  user_a_setprofile: ({ commit }, payload) => {
+  user_a_setprofile: ({
+    commit
+  }, payload) => {
 
     alert(payload);
     /*

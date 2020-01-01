@@ -20,7 +20,10 @@
         <td :class="!props.item.sname?redbg:''">
           <center>
             <v-avatar style="margin:3px">
-              <img src="@/assets/no-photo-available.png" class="img-responsive" />
+              <img
+                src="@/assets/no-photo-available.png"
+                class="img-responsive"
+              />
             </v-avatar>
           </center>
         </td>
@@ -31,7 +34,10 @@
             :style="darkside?'color:lightgreen':'color:green'"
             v-if="props.item.active==true"
           >fa-eye</v-icon>
-          <v-icon style="color:red" v-else>fa-eye-slash</v-icon>
+          <v-icon
+            style="color:red"
+            v-else
+          >fa-eye-slash</v-icon>
         </td>
         <td :class="!props.item.sname?redbg:''">
           <center>
@@ -39,7 +45,10 @@
               <v-tooltip bottom>
                 <template v-slot:activator="{ on }">
                   <span v-on="on">
-                    <app-part-dialog-edit :item="props.item" :subparts="subparts"></app-part-dialog-edit>
+                    <app-part-dialog-edit
+                      :item="props.item"
+                      :subparts="subparts"
+                    ></app-part-dialog-edit>
                   </span>
                 </template>
                 <span>Editar Parte</span>
@@ -64,61 +73,61 @@
 
 <script>
 export default {
-  props: ["parts", "subparts", "search"],
-  data() {
-    return {
-      pagination: "0",
-      headers: [
-        {
-          text: "Imagen",
-          align: "center",
-          sortable: false,
-          value: "image"
+    props: ['parts', 'subparts', 'search'],
+    data () {
+        return {
+            pagination: '0',
+            headers: [
+                {
+                    text: 'Imagen',
+                    align: 'center',
+                    sortable: false,
+                    value: 'image'
+                },
+                {
+                    text: 'Nombre',
+                    value: 'name'
+                },
+                {
+                    text: 'Sub-Parte',
+                    value: 'sname'
+                },
+                {
+                    text: 'Activo',
+                    value: 'active'
+                },
+                {
+                    text: 'Opciones',
+                    align: 'center',
+                    sortable: false
+                }
+            ]
+        };
+    },
+    computed: {
+        active () {
+            return this.items.active ? true : false;
         },
-        {
-          text: "Nombre",
-          value: "name"
+        loading () {
+            return this.$store.getters.ui_g_loading;
         },
-        {
-          text: "Sub-Parte",
-          value: "sname"
+        darkside () {
+            return this.$store.getters.ui_g_dark;
         },
-        {
-          text: "Activo",
-          value: "active"
-        },
-        {
-          text: "Opciones",
-          align: "center",
-          sortable: false
+        redbg () {
+            return this.darkside ? 'reddark' : 'redlight';
         }
-      ]
-    };
-  },
-  computed: {
-    active() {
-      return this.items.active ? true : false;
     },
-    loading() {
-      return this.$store.getters.ui_g_loading;
-    },
-    darkside() {
-      return this.$store.getters.ui_g_dark;
-    },
-    redbg() {
-      return this.darkside ? "reddark" : "redlight";
-    }
-  },
-  methods: {
-    subpartIndex(ID) {
-      let getsubpart = this.subparts.find((subpart, index) => {
-        if (subpart.ID == ID) {
-          return this.subparts[index];
+    methods: {
+        subpartIndex (ID) {
+            let getsubpart = this.subparts.find((subpart, index) => {
+                if (subpart.ID == ID) {
+                    return this.subparts[index];
+                }
+            });
+            return getsubpart ? getsubpart.name : '*** NO ASIGNADO ***';
         }
-      });
-      return getsubpart ? getsubpart.name : "*** NO ASIGNADO ***";
     }
-  }
 };
 </script>
 

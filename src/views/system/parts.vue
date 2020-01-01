@@ -1,11 +1,17 @@
 <template>
-  <app-panel dark noerror>
+  <app-panel
+    dark
+    noerror
+  >
     <template slot="title">
       <v-icon left>{{panel.icon}}</v-icon>
       <b>{{psp?'':'Sub '}}Partes</b>
     </template>
     <template slot="button">
-      <app-tooltip bottom tooltip="Buscar">
+      <app-tooltip
+        bottom
+        tooltip="Buscar"
+      >
         <v-text-field
           clearable
           v-model="search"
@@ -15,29 +21,64 @@
           placeholder="Buscar"
         ></v-text-field>
       </app-tooltip>
-      <app-tooltip bottom :tooltip="psp?'Sub Partes':'Partes'">
-        <v-btn icon @click="psp=!psp">
-          <v-icon dark class="text-white">{{psp?'fa-cogs':'fa-cog'}}</v-icon>
+      <app-tooltip
+        bottom
+        :tooltip="psp?'Sub Partes':'Partes'"
+      >
+        <v-btn
+          icon
+          @click="psp=!psp"
+        >
+          <v-icon
+            dark
+            class="text-white"
+          >{{psp?'fa-cogs':'fa-cog'}}</v-icon>
         </v-btn>
       </app-tooltip>
-      <app-tooltip bottom tooltip="Actualizar">
-        <v-btn icon @click="refreshlist">
-          <v-icon dark class="text-white">fa-refresh</v-icon>
+      <app-tooltip
+        bottom
+        tooltip="Actualizar"
+      >
+        <v-btn
+          icon
+          @click="refreshlist"
+        >
+          <v-icon
+            dark
+            class="text-white"
+          >fa-refresh</v-icon>
         </v-btn>
       </app-tooltip>
-      <app-tooltip bottom :tooltip="psp?'Nueva Parte':'Nueva Sub Parte'">
-        <app-parts-dialog-add v-if="psp" :subparts="subparts"></app-parts-dialog-add>
+      <app-tooltip
+        bottom
+        :tooltip="psp?'Nueva Parte':'Nueva Sub Parte'"
+      >
+        <app-parts-dialog-add
+          v-if="psp"
+          :subparts="subparts"
+        ></app-parts-dialog-add>
         <app-subparts-dialog-add v-else></app-subparts-dialog-add>
       </app-tooltip>
     </template>
-    <app-parts-list v-if="psp" ref="parts" :parts="parts" :subparts="subparts" :search="search"></app-parts-list>
-    <app-subparts-list v-else ref="subparts" :subparts="subparts" :search="search"></app-subparts-list>
+    <app-parts-list
+      v-if="psp"
+      ref="parts"
+      :parts="parts"
+      :subparts="subparts"
+      :search="search"
+    ></app-parts-list>
+    <app-subparts-list
+      v-else
+      ref="subparts"
+      :subparts="subparts"
+      :search="search"
+    ></app-subparts-list>
   </app-panel>
 </template>
 <script>
 /* eslint-disable */
 export default {
-  data() {
+  data () {
     return {
       panel: {
         title: "Partes",
@@ -49,24 +90,24 @@ export default {
     };
   },
   computed: {
-    parts() {
+    parts () {
       return this.$store.getters.admin_g_parts;
     },
-    subparts() {
+    subparts () {
       return this.$store.getters.admin_g_subparts;
     }
   },
   methods: {
-    onDismissed() {
+    onDismissed () {
       this.$store.dispatch("ui_a_clear_error");
     },
-    updatePartsList() {
+    updatePartsList () {
       this.$store.dispatch("admin_a_set_parts");
     },
-    updateSubPartsList() {
+    updateSubPartsList () {
       this.$store.dispatch("admin_a_set_subparts");
     },
-    updateList() {
+    updateList () {
       if (this.parts.length < 1) {
         this.updatePartsList();
       }
@@ -74,19 +115,19 @@ export default {
         this.updateSubPartsList();
       }
     },
-    refreshlist() {
+    refreshlist () {
       this.updatePartsList();
       this.updateSubPartsList();
     },
-    search_dialog() {
+    search_dialog () {
       this.sdialog = !this.sdialog;
     }
   },
-  created() {
+  created () {
     this.$store.dispatch("admin_a_set_subparts");
     this.updateList();
   },
-  updated() {
+  updated () {
     console.log("updated parts");
   }
 };

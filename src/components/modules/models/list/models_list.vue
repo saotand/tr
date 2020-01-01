@@ -20,7 +20,10 @@
         <td :class="!props.item.bname?redbg:''">
           <center>
             <v-avatar style="margin:3px">
-              <img src="@/assets/no-photo-available.png" class="img-responsive" />
+              <img
+                src="@/assets/no-photo-available.png"
+                class="img-responsive"
+              />
             </v-avatar>
             <!--
             <v-img
@@ -47,7 +50,10 @@
             :style="darkside?'color:lightgreen':'color:green'"
             v-if="props.item.active==true"
           >fa-eye</v-icon>
-          <v-icon style="color:red" v-else>fa-eye-slash</v-icon>
+          <v-icon
+            style="color:red"
+            v-else
+          >fa-eye-slash</v-icon>
         </td>
         <td :class="!props.item.bname?redbg:''">
           <center>
@@ -55,7 +61,10 @@
               <v-tooltip bottom>
                 <template v-slot:activator="{ on }">
                   <span v-on="on">
-                    <app-model-dialog-edit :item="props.item" :brands="brands"></app-model-dialog-edit>
+                    <app-model-dialog-edit
+                      :item="props.item"
+                      :brands="brands"
+                    ></app-model-dialog-edit>
                   </span>
                 </template>
                 <span>Editar Modelo</span>
@@ -81,64 +90,64 @@
 
 <script>
 export default {
-  props: ["items", "brands", "search"],
-  data() {
-    return {
-      pagination: "0",
-      headers: [
-        {
-          text: "Foto",
-          align: "center",
-          sortable: false,
-          value: "image"
+    props: ['items', 'brands', 'search'],
+    data () {
+        return {
+            pagination: '0',
+            headers: [
+                {
+                    text: 'Foto',
+                    align: 'center',
+                    sortable: false,
+                    value: 'image'
+                },
+                {
+                    text: 'Nombre',
+                    value: 'name'
+                },
+                {
+                    text: 'Marca',
+                    value: 'bname'
+                },
+                {
+                    text: 'Activo',
+                    value: 'active'
+                },
+                {
+                    text: 'Opciones',
+                    align: 'center',
+                    sortable: false
+                }
+            ]
+        };
+    },
+    computed: {
+        active () {
+            return this.items.active ? true : false;
         },
-        {
-          text: "Nombre",
-          value: "name"
+        loading () {
+            return this.$store.getters.ui_g_loading;
         },
-        {
-          text: "Marca",
-          value: "bname"
+        darkside () {
+            return this.$store.getters.ui_g_dark;
         },
-        {
-          text: "Activo",
-          value: "active"
-        },
-        {
-          text: "Opciones",
-          align: "center",
-          sortable: false
+        redbg () {
+            return this.darkside ? 'reddark' : 'redlight';
         }
-      ]
-    };
-  },
-  computed: {
-    active() {
-      return this.items.active ? true : false;
     },
-    loading() {
-      return this.$store.getters.ui_g_loading;
-    },
-    darkside() {
-      return this.$store.getters.ui_g_dark;
-    },
-    redbg() {
-      return this.darkside ? "reddark" : "redlight";
-    }
-  },
-  methods: {
-    brandIndex(ID) {
-      let getBrand = this.brands.find((brand, index) => {
-        if (brand.ID == ID) {
-          return this.brands[index];
+    methods: {
+        brandIndex (ID) {
+            let getBrand = this.brands.find((brand, index) => {
+                if (brand.ID == ID) {
+                    return this.brands[index];
+                }
+            });
+            return getBrand ? getBrand.name : '*** NO ASIGNADO ***';
         }
-      });
-      return getBrand ? getBrand.name : "*** NO ASIGNADO ***";
-    }
-  },
-  updated() {
+    },
+    updated () {
     //this.$store.dispatch("loadModels");
-  }
+    }
 };
 </script>
 

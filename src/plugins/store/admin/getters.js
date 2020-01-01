@@ -29,9 +29,9 @@ export default {
     admin_g_brand: state => {
         return ((brandID) => {
             return state.brands.find((brand) => {
-                return brand.ID === brandID
-            })
-        })
+                return brand.ID === brandID;
+            });
+        });
     },
     admin_g_models: state => {
         return state.models;
@@ -39,9 +39,9 @@ export default {
     admin_g_model: state => {
         return ((modelID) => {
             return state.models.find((model) => {
-                return model.ID === modelID
-            })
-        })
+                return model.ID === modelID;
+            });
+        });
     },
     admin_g_parts: state => {
         return state.parts;
@@ -49,9 +49,9 @@ export default {
     admin_g_part: state => {
         return ((partID) => {
             return state.parts.find((part) => {
-                return part.ID === partID
-            })
-        })
+                return part.ID === partID;
+            });
+        });
     },
     admin_g_subparts: state => {
         return state.subparts;
@@ -59,11 +59,11 @@ export default {
     admin_g_subpart: state => {
         return ((subpartID) => {
             return state.subparts.find((subpart) => {
-                return subpart.ID === subpartID
-            })
-        })
+                return subpart.ID === subpartID;
+            });
+        });
     },
     admin_g_allask: state => {
         return state.allask;
     }
-}
+};

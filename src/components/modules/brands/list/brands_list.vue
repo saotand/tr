@@ -35,7 +35,10 @@
             :style="darkside?'color:lightgreen':'color:green'"
             v-if="props.item.active==true"
           >fa-eye</v-icon>
-          <v-icon style="color:red" v-else>fa-eye-slash</v-icon>
+          <v-icon
+            style="color:red"
+            v-else
+          >fa-eye-slash</v-icon>
         </td>
         <td>
           <center>
@@ -68,48 +71,48 @@
 
 <script>
 export default {
-  props: ["items", "search"],
-  data() {
-    return {
-      pagination: "0",
-      headers: [
-        {
-          text: "Imagen",
-          align: "center",
-          sortable: false,
-          value: "image"
+    props: ['items', 'search'],
+    data () {
+        return {
+            pagination: '0',
+            headers: [
+                {
+                    text: 'Imagen',
+                    align: 'center',
+                    sortable: false,
+                    value: 'image'
+                },
+                {
+                    text: 'Nombre',
+                    value: 'name'
+                },
+                {
+                    text: 'Modelos',
+                    value: 'cars'
+                },
+                {
+                    text: 'Activo',
+                    value: 'active'
+                },
+                {
+                    text: 'Opciones',
+                    align: 'center',
+                    sortable: false
+                }
+            ]
+        };
+    },
+    computed: {
+        active () {
+            return this.items.active ? true : false;
         },
-        {
-          text: "Nombre",
-          value: "name"
+        loading () {
+            return this.$store.getters.ui_g_loading;
         },
-        {
-          text: "Modelos",
-          value: "cars"
-        },
-        {
-          text: "Activo",
-          value: "active"
-        },
-        {
-          text: "Opciones",
-          align: "center",
-          sortable: false
+        darkside () {
+            return this.$store.getters.ui_g_dark;
         }
-      ]
-    };
-  },
-  computed: {
-    active() {
-      return this.items.active ? true : false;
-    },
-    loading() {
-      return this.$store.getters.ui_g_loading;
-    },
-    darkside() {
-      return this.$store.getters.ui_g_dark;
     }
-  }
 };
 </script>
 

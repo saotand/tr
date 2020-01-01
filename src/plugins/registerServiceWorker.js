@@ -1,6 +1,6 @@
-/* eslint-disable no-console */
-
-import { register } from 'register-service-worker'
+import {
+    register
+} from 'register-service-worker';
 
 const applicationServerPublicKey = 'BBcPVet4FAvCSZ_v7MHblg_pQ9BPNfTg5azdn-sWRiPIcADvAhD7LUo3iqln0n9UhTOZ37uafyNzTJO-2gE2m-s';
 
@@ -28,14 +28,14 @@ function urlB64ToUint8Array(base64String) {
 //alert(process.env.NODE_ENV);
 //if (process.env.NODE_ENV === 'production') {
 //register(`${process.env.BASE_URL}sw.js`, {
-register("./sw.js", {
+register('./sw.js', {
     ready(event) {
 
 
         console.log(
             'App is being served from cache by a service worker.\n' +
             'For more details, visit https://goo.gl/AFskqB'
-        )
+        );
         swRegistration = event;
 
         function initialiseUI() {
@@ -53,7 +53,7 @@ register("./sw.js", {
         // Set the initial subscription value
         swRegistration.pushManager.getSubscription()
             .then(function (subscription) {
-                isSubscribed = !(subscription === null);
+                isSubscribed = (subscription !== null);
 
                 updateSubscriptionOnServer(subscription);
 
@@ -128,22 +128,22 @@ register("./sw.js", {
 
     },
     registered() {
-        console.log('Service worker has been registered.')
+        console.log('Service worker has been registered.');
     },
     cached() {
-        console.log('Content has been cached for offline use.')
+        console.log('Content has been cached for offline use.');
     },
     updatefound() {
-        console.log('New content is downloading.')
+        console.log('New content is downloading.');
     },
     updated() {
-        console.log('New content is available; please refresh.')
+        console.log('New content is available; please refresh.');
     },
     offline() {
-        console.log('No internet connection found. App is running in offline mode.')
+        console.log('No internet connection found. App is running in offline mode.');
     },
     error(error) {
-        console.error('Error during service worker registration:', error)
+        console.error('Error during service worker registration:', error);
     }
-})
+});
 //}

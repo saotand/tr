@@ -3,9 +3,15 @@ import axios from "axios";
 
 
 export default {
-    ask_a_create: ({ commit }, payload) => {
+    ask_a_create: ({
+        commit
+    }, payload) => {
         const Token = sessionStorage.getItem("token");
-        const options = { headers: { 'Authorization': Token } };
+        const options = {
+            headers: {
+                'Authorization': Token
+            }
+        };
         const URL = 'ask/add';
         if (Token) {
             commit("ui_m_loading", true);
@@ -29,10 +35,16 @@ export default {
                 });
         }
     },
-    ask_a_myasks: ({ commit }) => {
+    ask_a_myasks: ({
+        commit
+    }) => {
         commit("ui_m_loading", true);
         const Token = sessionStorage.getItem("token");
-        const options = { headers: { 'Authorization': Token } };
+        const options = {
+            headers: {
+                'Authorization': Token
+            }
+        };
         const URL = 'ask';
         if (Token) {
             commit("ui_m_loading", true);
@@ -59,10 +71,14 @@ export default {
 
     },
     /* FORM ACTIONS FOR ASK COMPONENT */
-    ask_a_years: ({ commit }) => {
+    ask_a_years: ({
+        commit
+    }) => {
         commit("ask_m_years");
     },
-    ask_a_brands: ({ commit }) => {
+    ask_a_brands: ({
+        commit
+    }) => {
         const url = "car/brands";
         commit("ui_m_loading", true);
         commit("ui_m_error", false);
@@ -72,7 +88,10 @@ export default {
                 const brands = response.data.data;
                 let selectBrands = [];
                 brands.forEach(x => {
-                    selectBrands.push({ text: x.name, value: x.ID });
+                    selectBrands.push({
+                        text: x.name,
+                        value: x.ID
+                    });
                 });
                 commit("ask_m_brands", selectBrands);
             })
@@ -90,7 +109,9 @@ export default {
                 commit("ui_m_loading", false);
             });
     },
-    ask_a_models: ({ commit }, payload) => {
+    ask_a_models: ({
+        commit
+    }, payload) => {
         const url = "/car/models/brand/" + payload;
         commit("ui_m_loading", true);
         commit("ui_m_error", false);
@@ -100,7 +121,10 @@ export default {
                 const models = response.data.data;
                 let selectModels = [];
                 models.forEach(x => {
-                    selectModels.push({ text: x.name, value: x.ID });
+                    selectModels.push({
+                        text: x.name,
+                        value: x.ID
+                    });
                 });
                 commit("ask_m_models", selectModels);
             })
@@ -119,7 +143,9 @@ export default {
                 commit("ui_m_loading", false);
             });
     },
-    ask_a_parts: ({ commit }) => {
+    ask_a_parts: ({
+        commit
+    }) => {
 
         const url = "car/parts";
         commit("ui_m_loading", true);
@@ -145,7 +171,9 @@ export default {
                 commit("ui_m_loading", false);
             });
     },
-    ask_a_mparts: ({ commit }) => {
+    ask_a_mparts: ({
+        commit
+    }) => {
         commit("ui_m_loading", true);
         commit("ui_m_error", false);
         const url = "car/mparts";
@@ -170,18 +198,24 @@ export default {
                 commit("ui_m_loading", false);
             });
     },
-    ask_a_setresponses: ({ commit }) => {
+    ask_a_setresponses: ({
+        commit
+    }) => {
 
         const Token = sessionStorage.getItem("token");
-        const options = { headers: { "Authorization": Token } };
+        const options = {
+            headers: {
+                "Authorization": Token
+            }
+        };
         const URL = '/ask?format=json';
         if (Token) {
             commit("ui_m_loading", true);
             commit("ui_m_error", false);
             axios.post(URL, null, options)
                 .then(response => {
-                    let profile = response.data.data
-                    commit("ask_m_responses", profile)
+                    let profile = response.data.data;
+                    commit("ask_m_responses", profile);
                 })
                 .catch(error => {
                     let message = '';
@@ -194,12 +228,18 @@ export default {
                     }
                 }).then(() => {
                     commit('ui_m_loading', false);
-                })
+                });
         }
     },
-    ask_a_saveresponseto: ({ commit }, payload) => {
+    ask_a_saveresponseto: ({
+        commit
+    }, payload) => {
         const Token = sessionStorage.getItem("token");
-        const options = { headers: { "Authorization": Token } };
+        const options = {
+            headers: {
+                "Authorization": Token
+            }
+        };
         const ID = payload.requestID;
         const URL = '/response/add/' + ID + "?format=json";
         if (Token) {
@@ -223,12 +263,18 @@ export default {
                 })
                 .then(() => {
                     commit("ui_m_loading", false);
-                })
+                });
         }
     },
-    ask_a_deleteresponseto: ({ commit }, payload) => {
+    ask_a_deleteresponseto: ({
+        commit
+    }, payload) => {
         const Token = sessionStorage.getItem("token");
-        const options = { headers: { "Authorization": Token } };
+        const options = {
+            headers: {
+                "Authorization": Token
+            }
+        };
         const ID = payload.ID;
         const URL = '/response/remove/' + ID + '?format=json';
         if (Token) {
@@ -251,8 +297,8 @@ export default {
                 })
                 .then(() => {
                     commit("ui_m_loading", false);
-                })
+                });
         }
 
     }
-}
+};

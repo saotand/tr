@@ -1,11 +1,18 @@
 <template>
-  <app-panel color="primary" dark noerror>
+  <app-panel
+    color="primary"
+    dark
+    noerror
+  >
     <template slot="title">
       <v-icon left>{{panel.icon}}</v-icon>
       <b>{{panel.title}}</b>
     </template>
     <template slot="button">
-      <app-tooltip bottom tooltip="Busqueda">
+      <app-tooltip
+        bottom
+        tooltip="Busqueda"
+      >
         <v-text-field
           clearable
           dark
@@ -17,31 +24,59 @@
         ></v-text-field>
       </app-tooltip>
 
-      <app-tooltip tooltip="Actualizar" bottom v-if="panel.refresh">
-        <v-btn icon @click="refresh">
-          <v-icon dark class="text-white">fa-refresh</v-icon>
+      <app-tooltip
+        tooltip="Actualizar"
+        bottom
+        v-if="panel.refresh"
+      >
+        <v-btn
+          icon
+          @click="refresh"
+        >
+          <v-icon
+            dark
+            class="text-white"
+          >fa-refresh</v-icon>
         </v-btn>
       </app-tooltip>
-      <app-tooltip tooltip="Actualizar" bottom v-if="panel.refresh">
-        <v-btn icon @click="cview">
-          <v-icon dark class="text-white">{{this.details?'fa-th-large':'fa-th-list'}}</v-icon>
+      <app-tooltip
+        tooltip="Actualizar"
+        bottom
+        v-if="panel.refresh"
+      >
+        <v-btn
+          icon
+          @click="cview"
+        >
+          <v-icon
+            dark
+            class="text-white"
+          >{{this.details?'fa-th-large':'fa-th-list'}}</v-icon>
         </v-btn>
       </app-tooltip>
       <app-user-form v-if="!loading"></app-user-form>
     </template>
     <template>
-      <app-usersdetails v-if="details" :users="users" :search="search"></app-usersdetails>
-      <app-userscards v-else :users="users" :search="search"></app-userscards>
+      <app-usersdetails
+        v-if="details"
+        :users="users"
+        :search="search"
+      ></app-usersdetails>
+      <app-userscards
+        v-else
+        :users="users"
+        :search="search"
+      ></app-userscards>
     </template>
   </app-panel>
 </template>
 <script>
-import cmpUserForm from "@/components/modules/user/dialogs/user_form.vue";
-import cmpUserCards from "@/components/modules/user/user_list/user_cards_list";
+import cmpUserForm from '@/components/modules/user/dialogs/user_form.vue';
+import cmpUserCards from '@/components/modules/user/user_list/user_cards_list';
 
 export default {
-  /* eslint-disable */
-  data() {
+    /* eslint-disable */
+  data () {
     return {
       panel: {
         icon: "fa-users",
@@ -55,26 +90,26 @@ export default {
     };
   },
   computed: {
-    loading() {
+    loading () {
       return this.$store.getters.ui_g_loading;
     },
-    users() {
+    users () {
       return this.$store.getters.admin_g_users;
     }
   },
   methods: {
-    onDismissed() {
+    onDismissed () {
       this.$store.dispatch("ui_a_clear_error");
     },
-    refresh() {
+    refresh () {
       this.$store.dispatch("admin_a_set_users");
       this.$store.dispatch("ui_a_clear_error");
     },
-    cview() {
+    cview () {
       this.details = !this.details;
     }
   },
-  updated() {
+  updated () {
     console.log("updated user");
   },
   components: {

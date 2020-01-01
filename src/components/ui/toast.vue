@@ -14,30 +14,34 @@
       :vertical="toast.mode === 'vertical'"
     >
       {{ toast.message }}
-      <v-btn dark flat @click="snackbar = false">&times;</v-btn>
+      <v-btn
+        dark
+        flat
+        @click="snackbar = false"
+      >&times;</v-btn>
     </v-snackbar>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["toast"],
-  data() {
-    return {
-      snackbar: false
-    };
-  },
-  watch: {
-    toast(value) {
-      this.snackbar = value;
+    props: ['toast'],
+    data () {
+        return {
+            snackbar: false
+        };
+    },
+    watch: {
+        toast (value) {
+            this.snackbar = value;
+        }
+    },
+    computed: {},
+    methods: {
+        ontimeout () {
+            this.$emit('snackout');
+        }
     }
-  },
-  computed: {},
-  methods: {
-    ontimeout() {
-      this.$emit("snackout");
-    }
-  }
 };
 </script>
 

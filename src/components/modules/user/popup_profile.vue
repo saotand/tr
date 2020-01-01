@@ -1,7 +1,18 @@
 <template>
-  <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="300" offset-x>
-    <template v-slot:activator="{ on }" tag="span">
-      <v-btn icon v-on="on">
+  <v-menu
+    v-model="menu"
+    :close-on-content-click="false"
+    :nudge-width="300"
+    offset-x
+  >
+    <template
+      v-slot:activator="{ on }"
+      tag="span"
+    >
+      <v-btn
+        icon
+        v-on="on"
+      >
         <v-icon>info</v-icon>
       </v-btn>
     </template>
@@ -76,36 +87,39 @@
       <v-card-actions>
         <v-spacer></v-spacer>
 
-        <v-btn color="primary" @click="menu = false">Cerrar</v-btn>
+        <v-btn
+          color="primary"
+          @click="menu = false"
+        >Cerrar</v-btn>
       </v-card-actions>
     </v-card>
   </v-menu>
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 export default {
-  props: ["user"],
-  data: () => ({
-    active: ["Inactivo", "Activo"],
-    levels: [
-      "Usuario",
-      "Vendedor",
-      "Mayorista",
-      "Agente",
-      "Supervisor",
-      "Administrador"
-    ],
-    fav: true,
-    menu: false,
-    message: false,
-    hints: false
-  }),
-  computed: {
-    baseurl() {
-      return axios.defaults.baseURL;
+    props: ['user'],
+    data: () => ({
+        active: ['Inactivo', 'Activo'],
+        levels: [
+            'Usuario',
+            'Vendedor',
+            'Mayorista',
+            'Agente',
+            'Supervisor',
+            'Administrador'
+        ],
+        fav: true,
+        menu: false,
+        message: false,
+        hints: false
+    }),
+    computed: {
+        baseurl () {
+            return axios.defaults.baseURL;
+        }
     }
-  }
 };
 </script>
 

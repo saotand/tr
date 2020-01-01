@@ -5,7 +5,10 @@
       {{card.title}}
     </template>
     <template slot="button">
-      <app-tooltip bottom tooltip="Cambiar">
+      <app-tooltip
+        bottom
+        tooltip="Cambiar"
+      >
         <v-btn icon>
           <v-icon>fa-user</v-icon>
         </v-btn>
@@ -37,30 +40,30 @@
 
 <script>
 export default {
-  data: () => ({
-    card: {
-      title: "Ventas",
-      icon: "home"
-    }
-  }),
-  computed: {
-    sells() {
-      return 0;
+    data: () => ({
+        card: {
+            title: 'Ventas',
+            icon: 'home'
+        }
+    }),
+    computed: {
+        sells () {
+            return 0;
+        },
+        responses () {
+            return 0;
+        },
+        ulevel () {
+            return this.$store.getters.admin_g_levels;
+        },
+        user () {
+            return this.$store.getters.user_g_user;
+        },
+        profile () {
+            return [];
+        }
     },
-    responses() {
-      return 0;
-    },
-    ulevel() {
-      return this.$store.getters.admin_g_levels;
-    },
-    user() {
-      return this.$store.getters.user_g_user;
-    },
-    profile() {
-      return [];
-    }
-  },
-  methods: {}
+    methods: {}
 };
 </script>
 

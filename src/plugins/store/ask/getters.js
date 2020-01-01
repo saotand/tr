@@ -5,9 +5,9 @@ export default {
     ask_g_ask: (state) => {
         return ((askID) => {
             return state.myask.find((mask) => {
-                return mask.ID === askID
-            })
-        })
+                return mask.ID === askID;
+            });
+        });
     },
     /* FORM GETTERS FOR ASK COMPONENT */
     ask_g_years: (state) => {
@@ -28,4 +28,4 @@ export default {
     ask_g_responses: (state) => {
         return state.responses;
     }
-}
+};

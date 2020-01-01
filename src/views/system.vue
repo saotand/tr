@@ -1,6 +1,10 @@
 
 <template>
-  <v-container fluid justify-space-around grid-list-xs>
+  <v-container
+    fluid
+    justify-space-around
+    grid-list-xs
+  >
     <app-navdrawer
       :userdata="user"
       :drawer="drawer"
@@ -17,7 +21,7 @@
 <script>
 /* eslint-disable */
 export default {
-  data() {
+  data () {
     return {
       drawer: true,
       rightside: false,
@@ -29,34 +33,34 @@ export default {
     };
   },
   computed: {
-    user() {
+    user () {
       return this.$store.getters.user_g_user;
     },
-    noticolor() {
+    noticolor () {
       if (this.notifications > 0) {
         return "red--text";
       } else {
         return "gray--text";
       }
     },
-    items() {
+    items () {
       let menu = this.$store.getters.ui_g_menulogin;
       let userlevel = this.user ? this.user.level : "6";
       return menu[userlevel];
     },
-    notifications() {
+    notifications () {
       return [];
     }
   },
   watch: {
-    user(value) {
+    user (value) {
       if (value == null || value == undefined) {
         this.$router.push("/");
       }
     }
   },
   methods: {
-    loadMain() {
+    loadMain () {
       if (this.user) {
         if (this.user.level > 3) {
           this.$store.dispatch("admin_a_set_users");
@@ -70,8 +74,8 @@ export default {
       this.$store.dispatch("ask_a_myasks");
     }
   },
-  created() {},
-  updated() {
+  created () { },
+  updated () {
     this.loadMain();
     console.log("updated System");
     let Token = sessionStorage.getItem("token");

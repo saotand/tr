@@ -832,89 +832,89 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 export default {
-  data: () => ({
-    infoallparts: "Sera notificado por todos los tipos de partes.",
-    infospecialparts: "Debes seleccionar las partes que vendes.",
-    tempprofile: [],
-    sectab: false,
-    showtabs: true,
-    tabs: 0,
-    pasos: 0,
-    docused: false,
-    emailused: false,
-    userdata: {
-      redirect: false,
-      email: "saotand@gmail.com",
-      pass: "123123",
-      confirmpass: "123123",
-      doc: "15879381",
-      doctype: "C",
-      nac: "V",
-      name: "David",
-      last: "Salinas",
-      level: 0,
-      phone: "04163231120",
-      birth: "1983-04-13",
-      created: "",
-      active: "1",
-      verified: "0",
-      image: "",
-      seller: {
-        name: "Empresa XXX",
-        image: "",
-        rif: "123123123",
-        nac: "J",
-        phone: "12311231212",
-        city: "Somewhere Somehow",
-        address: "123"
-      },
-      profile: []
-    },
-    birthdate: "0000-00-00",
-    birthdateFormatted: "0000-00-00",
-    showlevel: false,
-    menu1: false,
-    terms: false,
-    profilequest: {
-      brands: false,
-      models: false,
-      subparts: false,
-      parts: false
-    },
-    childs: [],
-    PH: {
-      brands: [],
-      models: [],
-      subparts: [],
-      parts: []
-    },
-    termstext: `<p align="justify"> Officia ut laboris exercitation aute eiusmod labore. Voluptate nostrud non aliquip voluptate duis Lorem minim deserunt aliqua. Ullamco culpa qui consequat adipisicing aliqua occaecat. </p> <p align="justify">Ut Lorem sunt ea elit ex dolore veniam esse. Minim ea tempor ea elit labore laborum labore do deserunt do nulla. Ipsum minim sint consequat elit amet occaecat proident sint labore. Quis laborum tempor non magna sunt velit veniam do adipisicing Lorem cupidatat duis laborum nisi. Anim ea ut eu commodo tempor incididunt proident pariatur. Dolore sit tempor ut eu elit. Sunt reprehenderit est esse Lorem tempor magna officia Lorem officia mollit consequat est. </p> <p align="justify"> Sunt dolore excepteur cillum amet proident nulla sunt excepteur do eu anim velit aliqua irure. Consequat sunt commodo anim tempor labore ad voluptate. Aliqua eiusmod consectetur anim esse culpa.</p> <p align="justify"> Ea irure aliqua officia est in. Eiusmod amet duis irure non mollit quis esse nulla cillum. Labore elit ex exercitation officia do non occaecat laborum ea ea do officia nulla anim. Duis ullamco dolor cillum duis sit occaecat ut do duis eu dolor. Eiusmod magna id ncididunt sunt magna sunt qui.</p> <p align="justify">Officia anim dolor quis nulla nisi ad cillum dolore cillum magna aliquip nostrud. Ullamco ea et ad ex laboris excepteur nulla quis eiusmod consequat ea est ut in. Ea labore sit irure occaecat ullamco. Elit Lorem labore aliquip eiusmod dolore ad consequat anim pariatur. Amet culpa aute et non sit est laboris nostrud dolore laboris eu aliqua non mollit.</p>`
-  }),
-  computed: {
-    partscheck() {
-      let check = true;
-      this.subparts.forEach(spart => {
-        this.userdata.profile.forEach(profile => {
-          if (spart.value == profile) {
-            check = false;
-          }
-        });
-        spart.childs.forEach(profilec => {
-          this.userdata.profile.forEach(profilex => {
-            if (profilec.value == profilex) {
-              check = false;
-            }
-          });
-        });
-      });
-      return check;
-    },
-    proxpaso() {
-      let condition;
-      if (this.pasos == 2) {
-        condition =
+    data: () => ({
+        infoallparts: 'Sera notificado por todos los tipos de partes.',
+        infospecialparts: 'Debes seleccionar las partes que vendes.',
+        tempprofile: [],
+        sectab: false,
+        showtabs: true,
+        tabs: 0,
+        pasos: 0,
+        docused: false,
+        emailused: false,
+        userdata: {
+            redirect: false,
+            email: 'saotand@gmail.com',
+            pass: '123123',
+            confirmpass: '123123',
+            doc: '15879381',
+            doctype: 'C',
+            nac: 'V',
+            name: 'David',
+            last: 'Salinas',
+            level: 0,
+            phone: '04163231120',
+            birth: '1983-04-13',
+            created: '',
+            active: '1',
+            verified: '0',
+            image: '',
+            seller: {
+                name: 'Empresa XXX',
+                image: '',
+                rif: '123123123',
+                nac: 'J',
+                phone: '12311231212',
+                city: 'Somewhere Somehow',
+                address: '123'
+            },
+            profile: []
+        },
+        birthdate: '0000-00-00',
+        birthdateFormatted: '0000-00-00',
+        showlevel: false,
+        menu1: false,
+        terms: false,
+        profilequest: {
+            brands: false,
+            models: false,
+            subparts: false,
+            parts: false
+        },
+        childs: [],
+        PH: {
+            brands: [],
+            models: [],
+            subparts: [],
+            parts: []
+        },
+        termstext: '<p align=\'justify\'> Officia ut laboris exercitation aute eiusmod labore. Voluptate nostrud non aliquip voluptate duis Lorem minim deserunt aliqua. Ullamco culpa qui consequat adipisicing aliqua occaecat. </p> <p align=\'justify\'>Ut Lorem sunt ea elit ex dolore veniam esse. Minim ea tempor ea elit labore laborum labore do deserunt do nulla. Ipsum minim sint consequat elit amet occaecat proident sint labore. Quis laborum tempor non magna sunt velit veniam do adipisicing Lorem cupidatat duis laborum nisi. Anim ea ut eu commodo tempor incididunt proident pariatur. Dolore sit tempor ut eu elit. Sunt reprehenderit est esse Lorem tempor magna officia Lorem officia mollit consequat est. </p> <p align=\'justify\'> Sunt dolore excepteur cillum amet proident nulla sunt excepteur do eu anim velit aliqua irure. Consequat sunt commodo anim tempor labore ad voluptate. Aliqua eiusmod consectetur anim esse culpa.</p> <p align="justify"> Ea irure aliqua officia est in. Eiusmod amet duis irure non mollit quis esse nulla cillum. Labore elit ex exercitation officia do non occaecat laborum ea ea do officia nulla anim. Duis ullamco dolor cillum duis sit occaecat ut do duis eu dolor. Eiusmod magna id ncididunt sunt magna sunt qui.</p> <p align="justify">Officia anim dolor quis nulla nisi ad cillum dolore cillum magna aliquip nostrud. Ullamco ea et ad ex laboris excepteur nulla quis eiusmod consequat ea est ut in. Ea labore sit irure occaecat ullamco. Elit Lorem labore aliquip eiusmod dolore ad consequat anim pariatur. Amet culpa aute et non sit est laboris nostrud dolore laboris eu aliqua non mollit.</p>'
+    }),
+    computed: {
+        partscheck() {
+            let check = true;
+            this.subparts.forEach(spart => {
+                this.userdata.profile.forEach(profile => {
+                    if (spart.value == profile) {
+                        check = false;
+                    }
+                });
+                spart.childs.forEach(profilec => {
+                    this.userdata.profile.forEach(profilex => {
+                        if (profilec.value == profilex) {
+                            check = false;
+                        }
+                    });
+                });
+            });
+            return check;
+        },
+        proxpaso() {
+            let condition;
+            if (this.pasos == 2) {
+                condition =
           !this.emailformatted ||
           this.userdata.name.length < 3 ||
           this.userdata.last.length < 3 ||
@@ -924,366 +924,366 @@ export default {
           this.pml ||
           this.cpp ||
           this.userdata.phone.length <= 10 ||
-          this.emailused != "" ||
-          this.docused != "";
-      } else if (this.pasos == 3) {
-        condition =
+          this.emailused != '' ||
+          this.docused != '';
+            } else if (this.pasos == 3) {
+                condition =
           this.userdata.seller.name.length < 3 ||
           this.userdata.seller.nac.length == 0 ||
           this.userdata.seller.rif.length < 9 ||
           this.userdata.seller.phone.length <= 10 ||
           this.userdata.seller.city.length == 0 ||
           this.userdata.seller.address == 0;
-      }
-      return condition;
-    },
-    emailformatted() {
-      let regexemail = /^[a-zA-Z0-9!#$&*?^{}˜.Çç-]+(\.[a-zA-Z0-9!#$&*?^{}˜.Çç-]+)*@([a-zA-Z0-9]+([a-zA-Z0-9-]*)\.)+[a-zA-Z]+$/;
-      let validemail = this.userdata.email.match(regexemail) ? true : false;
-      return validemail;
-    },
-    emailmessage() {
-      return this.emailformatted ? false : "Escribe un formato de email válido";
-    },
-    error() {
-      return this.$store.getters.ui_g_ecolor;
-    },
-    profiled() {
-      return this.userdata.profile.length;
-    },
-    nextttab() {
-      if (this.tabs === 0) {
-        if (this.profiled) {
-          return false;
-        } else {
-          return true;
-        }
-      } else {
-        if (this.sectab) {
-          return false;
-        } else {
-          return true;
-        }
-      }
-    },
-    allbrands() {
-      let abitem = "000000000000000000000000000000";
-      return this.userdata.profile.indexOf(abitem) != -1;
-    },
-    profilen() {
-      return this.userdata.profile.length;
-    },
-    brands() {
-      return this.PH.brands;
-    },
-    models() {
-      return this.PH.models;
-    },
-    subparts() {
-      return this.PH.subparts;
-    },
-    parts() {
-      return this.PH.parts;
-    },
-    mindate() {
-      let ys = 80;
-      return this.datediff(ys);
-    },
-    maxdate() {
-      let ys = 18;
-      return this.datediff(ys);
-    },
-    pml() {
-      return this.userdata.pass.length < 6 ? true : false;
-    },
-    minlength() {
-      return this.pml ? "Minimo 6 caracteres" : false;
-    },
-    cpp() {
-      return this.userdata.pass != this.userdata.confirmpass ? true : false;
-    },
-    comparePasswords() {
-      return this.cpp ? "Las contraseñas deben ser iguales" : false;
-    },
-    levels() {
-      return this.$store.getters.admin_g_levels;
-    },
-    docs() {
-      return this.$store.getters.admin_g_docs;
-    },
-    nacs() {
-      return [
-        {
-          text: "V",
-          value: "V"
-        },
-        {
-          text: "E",
-          value: "E"
-        }
-      ];
-    },
-    nacsg() {
-      return [
-        {
-          text: "J",
-          value: "J"
-        },
-        {
-          text: "V",
-          value: "V"
-        }
-      ];
-    },
-    niveles() {
-      return [
-        { text: "usuario", value: "0" },
-        { text: "vendedor", value: "1" }
-      ];
-    },
-    loading() {
-      return !this.$store.getters.ui_g_loading;
-    }
-  },
-  watch: {
-    error(value) {
-      if (value == "success") {
-        this.nextStep();
-      }
-    },
-
-    birthdate() {
-      this.birthdateFormatted = this.formatDate(this.birthdate);
-      this.userdata.birth = this.birthdate;
-    },
-    "userdata.profile"() {
-      if (this.tabs > 0) {
-        this.actsectab();
-      }
-      this.subparts.forEach((part, index) => {
-        this.userdata.profile.forEach(item => {
-          if (item == part.value) {
-            this.subparts[index].childs.forEach(spart => {
-              this.userdata.profile.find((pfdata, indexpf) => {
-                if (pfdata) {
-                  if (pfdata == spart.value) {
-                    this.userdata.profile.splice(indexpf, 1);
-                  }
-                }
-              });
-            });
-          }
-        });
-      });
-    },
-    allbrands(value) {
-      if (value) {
-        let br = this.brands;
-        let pf = this.userdata.profile;
-        br.forEach(br_elm => {
-          pf.forEach((elm, index) => {
-            if (elm == br_elm.value) {
-              this.userdata.profile.splice(index, 1);
             }
-          });
-        });
-      }
+            return condition;
+        },
+        emailformatted() {
+            let regexemail = /^[a-zA-Z0-9!#$&*?^{}˜.Çç-]+(\.[a-zA-Z0-9!#$&*?^{}˜.Çç-]+)*@([a-zA-Z0-9]+([a-zA-Z0-9-]*)\.)+[a-zA-Z]+$/;
+            let validemail = this.userdata.email.match(regexemail) ? true : false;
+            return validemail;
+        },
+        emailmessage() {
+            return this.emailformatted ? false : 'Escribe un formato de email válido';
+        },
+        error() {
+            return this.$store.getters.ui_g_ecolor;
+        },
+        profiled() {
+            return this.userdata.profile.length;
+        },
+        nextttab() {
+            if (this.tabs === 0) {
+                if (this.profiled) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                if (this.sectab) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        },
+        allbrands() {
+            let abitem = '000000000000000000000000000000';
+            return this.userdata.profile.indexOf(abitem) != -1;
+        },
+        profilen() {
+            return this.userdata.profile.length;
+        },
+        brands() {
+            return this.PH.brands;
+        },
+        models() {
+            return this.PH.models;
+        },
+        subparts() {
+            return this.PH.subparts;
+        },
+        parts() {
+            return this.PH.parts;
+        },
+        mindate() {
+            let ys = 80;
+            return this.datediff(ys);
+        },
+        maxdate() {
+            let ys = 18;
+            return this.datediff(ys);
+        },
+        pml() {
+            return this.userdata.pass.length < 6 ? true : false;
+        },
+        minlength() {
+            return this.pml ? 'Minimo 6 caracteres' : false;
+        },
+        cpp() {
+            return this.userdata.pass != this.userdata.confirmpass ? true : false;
+        },
+        comparePasswords() {
+            return this.cpp ? 'Las contraseñas deben ser iguales' : false;
+        },
+        levels() {
+            return this.$store.getters.admin_g_levels;
+        },
+        docs() {
+            return this.$store.getters.admin_g_docs;
+        },
+        nacs() {
+            return [
+                {
+                    text: 'V',
+                    value: 'V'
+                },
+                {
+                    text: 'E',
+                    value: 'E'
+                }
+            ];
+        },
+        nacsg() {
+            return [
+                {
+                    text: 'J',
+                    value: 'J'
+                },
+                {
+                    text: 'V',
+                    value: 'V'
+                }
+            ];
+        },
+        niveles() {
+            return [
+                { text: 'usuario', value: '0' },
+                { text: 'vendedor', value: '1' }
+            ];
+        },
+        loading() {
+            return !this.$store.getters.ui_g_loading;
+        }
+    },
+    watch: {
+        error(value) {
+            if (value == 'success') {
+                this.nextStep();
+            }
+        },
+
+        birthdate() {
+            this.birthdateFormatted = this.formatDate(this.birthdate);
+            this.userdata.birth = this.birthdate;
+        },
+        'userdata.profile'() {
+            if (this.tabs > 0) {
+                this.actsectab();
+            }
+            this.subparts.forEach((part, index) => {
+                this.userdata.profile.forEach(item => {
+                    if (item == part.value) {
+                        this.subparts[index].childs.forEach(spart => {
+                            this.userdata.profile.find((pfdata, indexpf) => {
+                                if (pfdata) {
+                                    if (pfdata == spart.value) {
+                                        this.userdata.profile.splice(indexpf, 1);
+                                    }
+                                }
+                            });
+                        });
+                    }
+                });
+            });
+        },
+        allbrands(value) {
+            if (value) {
+                let br = this.brands;
+                let pf = this.userdata.profile;
+                br.forEach(br_elm => {
+                    pf.forEach((elm, index) => {
+                        if (elm == br_elm.value) {
+                            this.userdata.profile.splice(index, 1);
+                        }
+                    });
+                });
+            }
+        }
+    },
+    methods: {
+        allParts() {
+            this.profilequest.subparts = 1;
+            this.subparts.forEach(spart => {
+                this.userdata.profile.forEach((profile, index) => {
+                    if (spart.value == profile) {
+                        this.userdata.profile.splice(index, 1);
+                    }
+                });
+            });
+        },
+        allpartsset() {
+            this.profilequest.subparts = 0;
+            this.subparts.forEach(item => {
+                this.userdata.profile.push(item.value);
+            });
+        },
+        onSignUp() {
+            this.$store.dispatch('user_a_signup', this.userdata);
+            if (this.ecolor == 'success') {
+                this.nextStep();
+            }
+        },
+        actsectab() {
+            this.sectab = true;
+        },
+        profile_brands() {
+            axios
+                .get('ask/notilist/brands')
+                .then(response => {
+                    const list = response.data.data;
+                    this.PH.brands = list;
+                })
+                .catch(error => {
+                    let message = '';
+                    if (error.response != undefined) {
+                        message = error.response.data.error.message;
+                    } else {
+                        message = error;
+                    }
+                    this.$store.dispatch('ui_a_error', message);
+                })
+                .then(() => {});
+        },
+        profile_subparts() {
+            axios
+                .get('ask/notilist/subparts')
+                .then(response => {
+                    const list = response.data.data;
+                    this.PH.subparts = list;
+                })
+                .catch(error => {
+                    let message = '';
+                    if (error.response != undefined) {
+                        message = error.response.data.error.message;
+                    } else {
+                        message = error;
+                    }
+                    this.$store.dispatch('ui_a_error', message);
+                })
+                .then(() => {});
+        },
+        getfile(event) {
+            if (event) {
+                let image = event.target.files[0];
+                this.image = image;
+            }
+        },
+        get64encode(base64) {
+            this.userdata.seller.image = base64;
+        },
+        get64encode2(base64) {
+            this.userdata.image = base64;
+        },
+        prevTab() {
+            const tabs = parseInt(this.tabs);
+            this.tabs = tabs > 0 ? tabs - 1 : 0;
+        },
+        nextTab() {
+            const tabs = parseInt(this.tabs);
+            this.tabs = tabs < 3 ? tabs + 1 : 0;
+        },
+        datediff(ddiff = 80) {
+            let dnow = new Date();
+            let ystart = dnow.getFullYear() - ddiff;
+            let mstart = dnow.getMonth();
+            let dystart = dnow.getUTCDate();
+            let dstart = new Date(ystart + '-' + (mstart + 1) + '-' + dystart);
+            return this.$moment(dstart).format('YYYY-MM-DD');
+        },
+        restarfechas(f1, f2) {
+            let aFecha1 = f1.split('-');
+            let aFecha2 = f2.split('-');
+            let fFecha1 = Date.UTC(aFecha1[2], aFecha1[1] - 1, aFecha1[0]);
+            let fFecha2 = Date.UTC(aFecha2[2], aFecha2[1] - 1, aFecha2[0]);
+            let dif = fFecha2 - fFecha1;
+            let dias = Math.floor(dif / (1000 * 60 * 60 * 24));
+            return dias;
+        },
+        formatDate(date) {
+            if (!date) return null;
+            const [year, month, day] = date.split('-');
+            return `${day}/${month}/${year}`;
+        },
+        parseDate(date) {
+            if (!date) return null;
+            const [month, day, year] = date.split('/');
+            return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+        },
+        start() {
+            this.pasos = 1;
+        },
+        nextStep() {
+            this.pasos++;
+        },
+        prevStep() {
+            this.pasos--;
+        },
+        do_action(who) {
+            this.userdata.level = who;
+            this.nextStep();
+        },
+        resetform() {
+            this.userdata.email = '';
+            this.userdata.pass = '';
+            this.userdata.confirmpass = '';
+            this.userdata.doc = '';
+            this.userdata.doctype = '';
+            this.userdata.nac = '';
+            this.userdata.name = '';
+            this.userdata.last = '';
+            this.userdata.level = '';
+            this.userdata.phone = '';
+            this.userdata.birth = '';
+            this.userdata.created = '';
+            this.userdata.active = '';
+            this.userdata.verified = '';
+        },
+        onBlurDoc(cData) {
+            let data = { doc: cData };
+            let url = 'user/check';
+            axios
+                .post(url, data)
+                .then(response => {
+                    let exists = response.data.data;
+                    if (exists) {
+                        this.docused = 'Ya Existe';
+                    } else {
+                        this.docused = false;
+                    }
+                })
+                .catch(error => {
+                    let message = '';
+                    if (error.response != undefined) {
+                        message = error.response.data.error.message;
+                        this.$store.dispatch('ui_a_error', message);
+                    } else {
+                        message = error;
+                        //commit("ui_m_warning", message);
+                    }
+                })
+                .then();
+        },
+        onBlurEmail(cData) {
+            let data = { email: cData };
+            let url = 'user/check';
+            axios
+                .post(url, data)
+                .then(response => {
+                    let exists = response.data.data;
+                    if (exists) {
+                        this.emailused = 'Ya Existe';
+                    } else {
+                        this.emailused = false;
+                    }
+                })
+                .catch(error => {
+                    let message = '';
+                    if (error.response != undefined) {
+                        message = error.response.data.error.message;
+                    } else {
+                        message = error;
+                    }
+                    this.$store.dispatch('ui_a_error', message);
+                })
+                .then();
+        }
+    },
+    created() {
+        this.birthdate = this.maxdate;
+        this.birthdateFormatted = this.formatDate(this.maxdate);
+        this.profile_brands();
+        this.profile_subparts();
     }
-  },
-  methods: {
-    allParts() {
-      this.profilequest.subparts = 1;
-      this.subparts.forEach(spart => {
-        this.userdata.profile.forEach((profile, index) => {
-          if (spart.value == profile) {
-            this.userdata.profile.splice(index, 1);
-          }
-        });
-      });
-    },
-    allpartsset() {
-      this.profilequest.subparts = 0;
-      this.subparts.forEach(item => {
-        this.userdata.profile.push(item.value);
-      });
-    },
-    onSignUp() {
-      this.$store.dispatch("user_a_signup", this.userdata);
-      if (this.ecolor == "success") {
-        this.nextStep();
-      }
-    },
-    actsectab() {
-      this.sectab = true;
-    },
-    profile_brands() {
-      axios
-        .get("ask/notilist/brands")
-        .then(response => {
-          const list = response.data.data;
-          this.PH.brands = list;
-        })
-        .catch(error => {
-          let message = "";
-          if (error.response != undefined) {
-            message = error.response.data.error.message;
-          } else {
-            message = error;
-          }
-          this.$store.dispatch("ui_a_error", message);
-        })
-        .then(() => {});
-    },
-    profile_subparts() {
-      axios
-        .get("ask/notilist/subparts")
-        .then(response => {
-          const list = response.data.data;
-          this.PH.subparts = list;
-        })
-        .catch(error => {
-          let message = "";
-          if (error.response != undefined) {
-            message = error.response.data.error.message;
-          } else {
-            message = error;
-          }
-          this.$store.dispatch("ui_a_error", message);
-        })
-        .then(() => {});
-    },
-    getfile(event) {
-      if (event) {
-        let image = event.target.files[0];
-        this.image = image;
-      }
-    },
-    get64encode(base64) {
-      this.userdata.seller.image = base64;
-    },
-    get64encode2(base64) {
-      this.userdata.image = base64;
-    },
-    prevTab() {
-      const tabs = parseInt(this.tabs);
-      this.tabs = tabs > 0 ? tabs - 1 : 0;
-    },
-    nextTab() {
-      const tabs = parseInt(this.tabs);
-      this.tabs = tabs < 3 ? tabs + 1 : 0;
-    },
-    datediff(ddiff = 80) {
-      let dnow = new Date();
-      let ystart = dnow.getFullYear() - ddiff;
-      let mstart = dnow.getMonth();
-      let dystart = dnow.getUTCDate();
-      let dstart = new Date(ystart + "-" + (mstart + 1) + "-" + dystart);
-      return this.$moment(dstart).format("YYYY-MM-DD");
-    },
-    restarfechas(f1, f2) {
-      let aFecha1 = f1.split("-");
-      let aFecha2 = f2.split("-");
-      let fFecha1 = Date.UTC(aFecha1[2], aFecha1[1] - 1, aFecha1[0]);
-      let fFecha2 = Date.UTC(aFecha2[2], aFecha2[1] - 1, aFecha2[0]);
-      let dif = fFecha2 - fFecha1;
-      let dias = Math.floor(dif / (1000 * 60 * 60 * 24));
-      return dias;
-    },
-    formatDate(date) {
-      if (!date) return null;
-      const [year, month, day] = date.split("-");
-      return `${day}/${month}/${year}`;
-    },
-    parseDate(date) {
-      if (!date) return null;
-      const [month, day, year] = date.split("/");
-      return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
-    },
-    start() {
-      this.pasos = 1;
-    },
-    nextStep() {
-      this.pasos++;
-    },
-    prevStep() {
-      this.pasos--;
-    },
-    do_action(who) {
-      this.userdata.level = who;
-      this.nextStep();
-    },
-    resetform() {
-      this.userdata.email = "";
-      this.userdata.pass = "";
-      this.userdata.confirmpass = "";
-      this.userdata.doc = "";
-      this.userdata.doctype = "";
-      this.userdata.nac = "";
-      this.userdata.name = "";
-      this.userdata.last = "";
-      this.userdata.level = "";
-      this.userdata.phone = "";
-      this.userdata.birth = "";
-      this.userdata.created = "";
-      this.userdata.active = "";
-      this.userdata.verified = "";
-    },
-    onBlurDoc(cData) {
-      let data = { doc: cData };
-      let url = "user/check";
-      axios
-        .post(url, data)
-        .then(response => {
-          let exists = response.data.data;
-          if (exists) {
-            this.docused = "Ya Existe";
-          } else {
-            this.docused = false;
-          }
-        })
-        .catch(error => {
-          let message = "";
-          if (error.response != undefined) {
-            message = error.response.data.error.message;
-            this.$store.dispatch("ui_a_error", message);
-          } else {
-            message = error;
-            //commit("ui_m_warning", message);
-          }
-        })
-        .then();
-    },
-    onBlurEmail(cData) {
-      let data = { email: cData };
-      let url = "user/check";
-      axios
-        .post(url, data)
-        .then(response => {
-          let exists = response.data.data;
-          if (exists) {
-            this.emailused = "Ya Existe";
-          } else {
-            this.emailused = false;
-          }
-        })
-        .catch(error => {
-          let message = "";
-          if (error.response != undefined) {
-            message = error.response.data.error.message;
-          } else {
-            message = error;
-          }
-          this.$store.dispatch("ui_a_error", message);
-        })
-        .then();
-    }
-  },
-  created() {
-    this.birthdate = this.maxdate;
-    this.birthdateFormatted = this.formatDate(this.maxdate);
-    this.profile_brands();
-    this.profile_subparts();
-  }
 };
 </script>
 

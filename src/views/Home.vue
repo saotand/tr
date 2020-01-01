@@ -13,7 +13,7 @@
 export default {
   name: "home",
   components: {},
-  data() {
+  data () {
     return {
       modelo: "",
       marca: "",
@@ -23,22 +23,22 @@ export default {
     };
   },
   computed: {
-    loading() {
+    loading () {
       return this.$store.getters.ui_g_loading;
     },
-    user() {
+    user () {
       return this.$store.getters.user_g_user;
     }
   },
   watch: {
-    user(val) {
+    user (val) {
       if (val == null || val == undefined) {
         this.$router.push({ name: "home" });
       }
     }
   },
   methods: {},
-  updated() {
+  updated () {
     console.log("updated home");
   }
 };

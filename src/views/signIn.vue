@@ -2,7 +2,12 @@
   <div>
     <v-container justify-center>
       <v-layout>
-        <v-flex column xs12 sm6 offset-sm3>
+        <v-flex
+          column
+          xs12
+          sm6
+          offset-sm3
+        >
           <app-panel noerror>
             <template slot="title">
               <v-icon left>fa-user</v-icon>Ingresa
@@ -36,11 +41,22 @@
                   </v-flex>
                 </v-layout>
                 <v-layout row>
-                  <v-flex xs12 align-center>
+                  <v-flex
+                    xs12
+                    align-center
+                  >
                     <center>
-                      <v-btn class="primary" type="submit" :disabled="loading" :loading="loading">
+                      <v-btn
+                        class="primary"
+                        type="submit"
+                        :disabled="loading"
+                        :loading="loading"
+                      >
                         Registrar
-                        <span slot="loader" class="custom-loader">
+                        <span
+                          slot="loader"
+                          class="custom-loader"
+                        >
                           <v-icon light>cached</v-icon>
                         </span>
                       </v-btn>
@@ -59,7 +75,7 @@
 <script>
 /* eslint-disable */
 export default {
-  data() {
+  data () {
     return {
       userdata: {
         email: "admin@turepuesto.com",
@@ -68,28 +84,28 @@ export default {
     };
   },
   computed: {
-    user() {
+    user () {
       return this.$store.getters.user_g_user;
     },
-    error() {
+    error () {
       return this.$store.getters.ui_g_error;
     },
-    loading() {
+    loading () {
       return this.$store.getters.ui_g_loading;
     }
   },
   watch: {
-    user(value) {
+    user (value) {
       if (value !== null && value !== undefined) {
         this.$router.push({ name: "resumen" });
       }
     }
   },
   methods: {
-    onSignUp() {
+    onSignUp () {
       this.$store.dispatch("user_a_signin", this.userdata);
     },
-    onDismissed() {
+    onDismissed () {
       this.$store.dispatch("ui_a_clear_error");
     }
   }

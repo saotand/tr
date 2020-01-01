@@ -1,11 +1,19 @@
 <template>
-  <app-panel color="primary" dark noerror>
+  <app-panel
+    color="primary"
+    dark
+    noerror
+  >
     <template slot="title">
       <v-icon left>{{panel.icon}}</v-icon>
       <b>{{askID ? panel.titlealt:panel.title}}</b>
     </template>
     <template slot="button">
-      <app-tooltip v-if="!askID" bottom tooltip="Buscar">
+      <app-tooltip
+        v-if="!askID"
+        bottom
+        tooltip="Buscar"
+      >
         <v-text-field
           clearable
           dark
@@ -17,19 +25,40 @@
         ></v-text-field>
       </app-tooltip>
 
-      <app-tooltip v-if="!askID" bottom tooltip="Actualizar">
-        <v-btn icon @click="refresh">
-          <v-icon dark class="text-white">fa-refresh</v-icon>
+      <app-tooltip
+        v-if="!askID"
+        bottom
+        tooltip="Actualizar"
+      >
+        <v-btn
+          icon
+          @click="refresh"
+        >
+          <v-icon
+            dark
+            class="text-white"
+          >fa-refresh</v-icon>
         </v-btn>
       </app-tooltip>
 
-      <app-tooltip bottom tooltip="Nueva Pregunta">
-        <v-btn icon disabled>
+      <app-tooltip
+        bottom
+        tooltip="Nueva Pregunta"
+      >
+        <v-btn
+          icon
+          disabled
+        >
           <v-icon>fa-plus</v-icon>
         </v-btn>
       </app-tooltip>
     </template>
-    <app-ask-list v-if="!askID" :search="search" :items="asks" :headers="headers"></app-ask-list>
+    <app-ask-list
+      v-if="!askID"
+      :search="search"
+      :items="asks"
+      :headers="headers"
+    ></app-ask-list>
     <router-view v-else></router-view>
   </app-panel>
 </template>
@@ -39,7 +68,7 @@
 import cmpAppAskList from "@/components/modules/ask/list/ask_list";
 
 export default {
-  data() {
+  data () {
     return {
       panel: {
         title: "Mis Preguntas",
@@ -59,23 +88,23 @@ export default {
     };
   },
   computed: {
-    askID() {
+    askID () {
       return this.$route.params.askid;
     },
-    asks() {
+    asks () {
       return this.$store.getters.ask_g_asks;
     },
-    users() {
+    users () {
       return this.$store.getters.admin_g_users;
     }
   },
   methods: {
-    refresh() {
+    refresh () {
       this.$store.dispatch("ask_a_myasks");
       this.$store.dispatch("ui_a_clear_error");
     }
   },
-  updated() {
+  updated () {
     console.log("updated asked");
   },
   components: {

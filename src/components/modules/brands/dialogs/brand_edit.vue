@@ -1,19 +1,36 @@
 <template>
   <span>
-    <v-dialog v-model="form.dialog" :width="form.width" :persistent="form.persistent">
+    <v-dialog
+      v-model="form.dialog"
+      :width="form.width"
+      :persistent="form.persistent"
+    >
       <template v-slot:activator="{ on }">
-        <v-btn icon v-on="on">
+        <v-btn
+          icon
+          v-on="on"
+        >
           <v-icon>{{form.icon}}</v-icon>
         </v-btn>
       </template>
-      <app-panel dark noerror noloading>
+      <app-panel
+        dark
+        noerror
+        noloading
+      >
         <template slot="title">
           <v-icon left>{{form.icon}}</v-icon>
           {{form.action}} {{form.title}}
         </template>
         <template slot="button">
-          <app-tooltip right tooltip="Cerrar Ventana">
-            <v-btn icon @click="oncancel">
+          <app-tooltip
+            right
+            tooltip="Cerrar Ventana"
+          >
+            <v-btn
+              icon
+              @click="oncancel"
+            >
               <v-icon>fa-times</v-icon>
             </v-btn>
           </app-tooltip>
@@ -36,7 +53,10 @@
               <v-flex xs12>
                 <center>
                   <v-avatar size="80">
-                    <img :src="brand.image" class="img-responsive" />
+                    <img
+                      :src="brand.image"
+                      class="img-responsive"
+                    />
                   </v-avatar>
                 </center>
                 <app-file-upload
@@ -76,7 +96,12 @@
               <v-icon left>{{form.cancel_icon}}</v-icon>
               {{form.cancel}}
             </v-btn>
-            <v-btn type="submit" color="success" :disabled="loading||changed" :loading="loading">
+            <v-btn
+              type="submit"
+              color="success"
+              :disabled="loading||changed"
+              :loading="loading"
+            >
               <v-icon left>{{form.ok_icon}}</v-icon>
               {{form.ok}}
             </v-btn>
@@ -117,21 +142,21 @@ export default {
     active: true
   }),
   watch: {
-    active(value) {
+    active (value) {
       this.brand.active = value ? "1" : "0";
     }
   },
   computed: {
-    darkset() {
+    darkset () {
       return this.$store.getters.ui_g_dark;
     },
-    user() {
+    user () {
       return this.$store.getters.user_g_user;
     },
-    loading() {
+    loading () {
       return this.$store.getters.ui_g_loading;
     },
-    changed() {
+    changed () {
       return (
         (this.brand.name == this.item.name &&
           this.brand.active == this.item.active &&
@@ -142,21 +167,21 @@ export default {
   },
 
   methods: {
-    onsubmit() {
+    onsubmit () {
       this.$store.dispatch("admin_a_edit_brands", this.brand);
       this.closewindow();
     },
-    oncancel() {
+    oncancel () {
       this.closewindow();
       this.clearform();
     },
-    closewindow() {
+    closewindow () {
       this.form.dialog = false;
     },
-    onDismissed() {
+    onDismissed () {
       this.$store.dispatch("ui_a_clear_error");
     },
-    clearform() {
+    clearform () {
       this.brand.ID = this.item.ID;
       this.brand.name = this.item.name;
       this.brand.image = this.item.image;
@@ -164,11 +189,11 @@ export default {
       this.brand.active = this.item.active;
       this.active = this.item.active == "1" ? true : false;
     },
-    get64encode(base64) {
+    get64encode (base64) {
       this.brand.image = base64;
     }
   },
-  updated() {
+  updated () {
     if (this.brand.ID != this.item.ID) this.clearform();
   }
 };

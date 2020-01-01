@@ -20,11 +20,11 @@
 </template>
 
 <script>
-import cmpSignUpQuest from "@/components/modules/user/login/signupformquest";
+import cmpSignUpQuest from '@/components/modules/user/login/signupformquest';
 
 export default {
-  components:{
-    "app-user-quest":cmpSignUpQuest
-  }
+    components: {
+        'app-user-quest': cmpSignUpQuest
+    }
 };
 </script>

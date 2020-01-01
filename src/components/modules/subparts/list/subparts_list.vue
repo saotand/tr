@@ -23,7 +23,10 @@
             :style="darkside?'color:lightgreen':'color:green'"
             v-if="props.item.active==true"
           >fa-eye</v-icon>
-          <v-icon style="color:red" v-else>fa-eye-slash</v-icon>
+          <v-icon
+            style="color:red"
+            v-else
+          >fa-eye-slash</v-icon>
         </td>
         <td>
           <center>
@@ -31,7 +34,10 @@
               <v-tooltip bottom>
                 <template v-slot:activator="{ on }">
                   <span v-on="on">
-                    <app-subparts-dialog-edit :black="true" :item="props.item"></app-subparts-dialog-edit>
+                    <app-subparts-dialog-edit
+                      :black="true"
+                      :item="props.item"
+                    ></app-subparts-dialog-edit>
                   </span>
                 </template>
                 <span>Editar {{title}}</span>
@@ -56,15 +62,15 @@
 
 <script>
 export default {
-  props: ["parts", "subparts", "search"],
-  data() {
-    return {
-      nodata: "No hay Subpartes que mostrar",
-      rppi: [10, 25, 50, 100, { text: "Todos", value: -1 }],
-      title: "Subpartes",
-      pagination: "0",
-      headers: [
-        /*
+    props: ['parts', 'subparts', 'search'],
+    data () {
+        return {
+            nodata: 'No hay Subpartes que mostrar',
+            rppi: [10, 25, 50, 100, { text: 'Todos', value: -1 }],
+            title: 'Subpartes',
+            pagination: '0',
+            headers: [
+                /*
         {
           text: "Imagen",
           align: "center",
@@ -72,43 +78,43 @@ export default {
           value: "image"
         },
         */
-        {
-          text: "Nombre",
-          value: "name"
-        },
-        {
-          text: "Activo",
-          value: "active"
-        },
-        {
-          text: "Opciones",
-          align: "center",
-          sortable: false
-        }
-      ]
-    };
-  },
-  computed: {
-    active() {
-      return this.items.active ? true : false;
+                {
+                    text: 'Nombre',
+                    value: 'name'
+                },
+                {
+                    text: 'Activo',
+                    value: 'active'
+                },
+                {
+                    text: 'Opciones',
+                    align: 'center',
+                    sortable: false
+                }
+            ]
+        };
     },
-    loading() {
-      return this.$store.getters.ui_g_loading;
-    },
-    darkside() {
-      return this.$store.getters.ui_g_dark;
-    }
-  },
-  methods: {
-    subpartIndex(ID) {
-      let getsubpart = this.subparts.find((subpart, index) => {
-        if (subpart.ID == ID) {
-          return this.subparts[index];
+    computed: {
+        active () {
+            return this.items.active ? true : false;
+        },
+        loading () {
+            return this.$store.getters.ui_g_loading;
+        },
+        darkside () {
+            return this.$store.getters.ui_g_dark;
         }
-      });
-      return getsubpart.name;
+    },
+    methods: {
+        subpartIndex (ID) {
+            let getsubpart = this.subparts.find((subpart, index) => {
+                if (subpart.ID == ID) {
+                    return this.subparts[index];
+                }
+            });
+            return getsubpart.name;
+        }
     }
-  }
 };
 </script>
 

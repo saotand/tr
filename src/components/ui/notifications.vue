@@ -1,9 +1,21 @@
 <template>
   <div class="text-xs-center">
-    <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="300" offset-x>
+    <v-menu
+      v-model="menu"
+      :close-on-content-click="false"
+      :nudge-width="300"
+      offset-x
+    >
       <template v-slot:activator="{ on }">
-        <v-btn icon style="margin-right:10px" v-on="on">
-          <v-badge :color="cnotifications" top>
+        <v-btn
+          icon
+          style="margin-right:10px"
+          v-on="on"
+        >
+          <v-badge
+            :color="cnotifications"
+            top
+          >
             <template v-slot:badge>
               <span>{{nnotifications}}</span>
             </template>
@@ -32,20 +44,20 @@
 
 <script>
 export default {
-  props: ["notifications"],
-  data: () => ({
-    fav: true,
-    menu: false,
-    message: false,
-    hints: true
-  }),
-  computed: {
-    nnotifications() {
-      return this.notifications.length;
-    },
-    cnotifications() {
-      return this.nnotifications > 0 ? "red" : "#999999";
+    props: ['notifications'],
+    data: () => ({
+        fav: true,
+        menu: false,
+        message: false,
+        hints: true
+    }),
+    computed: {
+        nnotifications () {
+            return this.notifications.length;
+        },
+        cnotifications () {
+            return this.nnotifications > 0 ? 'red' : '#999999';
+        }
     }
-  }
 };
 </script>

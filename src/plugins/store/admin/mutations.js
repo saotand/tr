@@ -3,7 +3,7 @@
 export default {
     /* users */
     admin_m_set_users(state, payload) {
-        state.users = payload
+        state.users = payload;
     },
     admin_m_clear_users(state) {
         state.users = [];
@@ -27,7 +27,7 @@ export default {
                     state.users[index].level = payload.level;
                 }
             }
-        })
+        });
     },
     admin_m_del_users(state, userID) {
         state.users.find((user, index) => {
@@ -36,7 +36,7 @@ export default {
                     state.users.splice(index, 1);
                 }
             }
-        })
+        });
     },
     /* brands */
     admin_m_set_brands(state, payload) {
@@ -56,10 +56,10 @@ export default {
                     state.brands[index].name = payload.name;
                     state.brands[index].image = payload.image;
                     state.brands[index].count = payload.count;
-                    state.brands[index].active = payload.active
+                    state.brands[index].active = payload.active;
                 }
             }
-        })
+        });
     },
     admin_m_del_brands(state, payload) {
         state.brands.find((brand, index) => {
@@ -68,7 +68,7 @@ export default {
                     state.brands.splice(index, 1);
                 }
             }
-        })
+        });
     },
     /* Models */
     admin_m_set_models(state, payload) {
@@ -93,7 +93,7 @@ export default {
                     state.models[index].active = payload.active;
                 }
             }
-        })
+        });
     },
     admin_m_del_models(state, payload) {
         state.models.find((model, index) => {
@@ -102,11 +102,11 @@ export default {
                     state.models.splice(index, 1);
                 }
             }
-        })
+        });
     },
     /* parts */
     admin_m_set_parts(state, payload) {
-        state.parts = payload
+        state.parts = payload;
     },
     admin_m_clear_parts(state) {
         state.parts = [];
@@ -172,4 +172,4 @@ export default {
     admin_m_set_ask: (state, payload) => {
         state.allask = payload;
     }
-}
+};

@@ -9,8 +9,17 @@
         </template>
         <v-card>
           <v-card-text>
-            <v-layout row wrap>
-              <v-flex xs12 sm12 md2 lg2 xl2>
+            <v-layout
+              row
+              wrap
+            >
+              <v-flex
+                xs12
+                sm12
+                md2
+                lg2
+                xl2
+              >
                 <v-checkbox
                   @change="changemyprofile"
                   color="primary"
@@ -19,7 +28,15 @@
                   :value="'000000000000000000000000000000'"
                 ></v-checkbox>
               </v-flex>
-              <v-flex xs12 sm12 md2 lg2 xl2 v-for="(brand) in brands" :key="brand.ID">
+              <v-flex
+                xs12
+                sm12
+                md2
+                lg2
+                xl2
+                v-for="(brand) in brands"
+                :key="brand.ID"
+              >
                 <v-checkbox
                   @change="changemyprofile"
                   :disabled="myprofile.indexOf('000000000000000000000000000000')!=-1"
@@ -44,16 +61,31 @@
         <v-card>
           <v-card-text>
             <v-expansion-panel>
-              <v-expansion-panel-content v-for="(subpart,index) in subparts" :key="index">
+              <v-expansion-panel-content
+                v-for="(subpart,index) in subparts"
+                :key="index"
+              >
                 <template v-slot:header>
                   <h3 style="width:100%">{{subpart.text}}</h3>
                   <v-spacer></v-spacer>
                 </template>
                 <v-card>
                   <v-card-text>
-                    <v-layout row wrap>
-                      <v-flex xs12 sm12 md2 lg2 xl2>
-                        <app-tooltip top :tooltip="'Seleccionar todo de ' + subpart.text">
+                    <v-layout
+                      row
+                      wrap
+                    >
+                      <v-flex
+                        xs12
+                        sm12
+                        md2
+                        lg2
+                        xl2
+                      >
+                        <app-tooltip
+                          top
+                          :tooltip="'Seleccionar todo de ' + subpart.text"
+                        >
                           <v-checkbox
                             @change="changemyprofile"
                             color="primary"
@@ -64,7 +96,14 @@
                         </app-tooltip>
                       </v-flex>
                       <template v-for="(part,index) in subpart.childs">
-                        <v-flex xs12 sm12 md2 lg2 xl2 :key="index">
+                        <v-flex
+                          xs12
+                          sm12
+                          md2
+                          lg2
+                          xl2
+                          :key="index"
+                        >
                           <v-checkbox
                             @change="changemyprofile"
                             :disabled="myprofile.indexOf(subpart.value) != -1"
@@ -85,7 +124,10 @@
         </v-card>
       </v-expansion-panel-content>
     </v-expansion-panel>
-    <v-btn @click="savechanges" :disabled="!savenow">Guardar</v-btn>
+    <v-btn
+      @click="savechanges"
+      :disabled="!savenow"
+    >Guardar</v-btn>
   </span>
 </template>
 
@@ -105,16 +147,16 @@ export default {
     subparts: []
   }),
   computed: {
-    allbrands() {
+    allbrands () {
       let abitem = "000000000000000000000000000000";
       return this.myprofile.indexOf(abitem) != -1;
     },
-    savenow() {
+    savenow () {
       return this.profile != this.myprofile;
     }
   },
   watch: {
-    myprofile(value) {
+    myprofile (value) {
       this.subparts.forEach((part, index) => {
         this.myprofile.forEach((item, indexpf) => {
           if (item == part.value) {
@@ -132,7 +174,7 @@ export default {
       });
       this.$emit("profilechanged", this.myprofile);
     },
-    allbrands(value) {
+    allbrands (value) {
       if (value) {
         let br = this.brands;
         let pf = this.myprofile;
@@ -147,14 +189,14 @@ export default {
     }
   },
   methods: {
-    savechanges() {
+    savechanges () {
       this.$store.dispatch("user_a_setprofile", this.myprofile);
     },
-    changemyprofile(event) {
+    changemyprofile (event) {
       this.myprofile = event;
       this.$emit("profilechanged", this.myprofile);
     },
-    profile_brands() {
+    profile_brands () {
       Axios.get("ask/notilist/brands")
         .then(response => {
           const list = response.data.data;
@@ -168,9 +210,9 @@ export default {
             message = error;
           }
         })
-        .then(() => {});
+        .then(() => { });
     },
-    profile_subparts() {
+    profile_subparts () {
       Axios.get("ask/notilist/subparts")
         .then(response => {
           const list = response.data.data;
@@ -184,10 +226,10 @@ export default {
             message = error;
           }
         })
-        .then(() => {});
+        .then(() => { });
     }
   },
-  created() {
+  created () {
     this.profile_brands();
     this.profile_subparts();
     this.myprofile = this.profile;

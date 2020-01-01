@@ -1,14 +1,41 @@
 <template>
   <span>
     <v-layout row>
-      <v-flex xs12 sm12 md4>
-        <v-autocomplete label="Pais" v-model="country" :items="countrysel" @input="clean_city"></v-autocomplete>
+      <v-flex
+        xs12
+        sm12
+        md4
+      >
+        <v-autocomplete
+          label="Pais"
+          v-model="country"
+          :items="countrysel"
+          @input="clean_city"
+        ></v-autocomplete>
       </v-flex>
-      <v-flex xs12 sm12 md4>
-        <v-autocomplete label="Estado" v-model="city" :items="citysel" @input="clean_location"></v-autocomplete>
+      <v-flex
+        xs12
+        sm12
+        md4
+      >
+        <v-autocomplete
+          label="Estado"
+          v-model="city"
+          :items="citysel"
+          @input="clean_location"
+        ></v-autocomplete>
       </v-flex>
-      <v-flex xs12 sm12 md4>
-        <v-autocomplete label="Ciudad" v-model="location" :items="locationsel" @input="updateCmp"></v-autocomplete>
+      <v-flex
+        xs12
+        sm12
+        md4
+      >
+        <v-autocomplete
+          label="Ciudad"
+          v-model="location"
+          :items="locationsel"
+          @input="updateCmp"
+        ></v-autocomplete>
       </v-flex>
     </v-layout>
   </span>
@@ -27,20 +54,20 @@ export default {
     country: ""
   }),
   watch: {
-    countrysel(valuec) {
+    countrysel (valuec) {
       this.gotfromlocation(valuec);
     },
-    location(value) {
+    location (value) {
       if (value != "") {
         this.gotfromlocation(value);
       }
     }
   },
   computed: {
-    countrysel() {
+    countrysel () {
       return this.$store.getters.ui_g_locationlist;
     },
-    citysel() {
+    citysel () {
       let countrylist = [];
       if (this.countrysel) {
         this.countrysel.forEach(c => {
@@ -53,7 +80,7 @@ export default {
       }
       return countrylist;
     },
-    locationsel() {
+    locationsel () {
       let locationlist = [];
       if (this.citysel) {
         this.citysel.forEach(l => {
@@ -68,10 +95,10 @@ export default {
     }
   },
   methods: {
-    updateCmp() {
+    updateCmp () {
       this.$emit("input", this.location);
     },
-    gotfromlocation(location) {
+    gotfromlocation (location) {
       this.countrysel.forEach(country_e => {
         country_e.childs.forEach(city_e => {
           city_e.childs.forEach(location_e => {
@@ -84,20 +111,20 @@ export default {
         });
       });
     },
-    clean_city() {
+    clean_city () {
       this.city = "";
       this.location = "";
       this.$emit("input", "");
     },
-    clean_location() {
+    clean_location () {
       this.location = "";
       this.$emit("input", "");
     }
   },
-  created() {
+  created () {
     this.location = this.value;
   },
-  mounted() {
+  mounted () {
     this.gotfromlocation(this.value);
   }
 };

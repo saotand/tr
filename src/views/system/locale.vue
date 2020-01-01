@@ -4,17 +4,36 @@
       <v-icon left>fa-map</v-icon>Localizacion
     </template>
     <template slot="button">
-      <app-tooltip bottom tooltip="Regresar" v-if="selected">
-        <v-btn icon to="/system/locale">
+      <app-tooltip
+        bottom
+        tooltip="Regresar"
+        v-if="selected"
+      >
+        <v-btn
+          icon
+          to="/system/locale"
+        >
           <v-icon>fa-arrow-circle-up</v-icon>
         </v-btn>
       </app-tooltip>
-      <app-tooltip bottom tooltip="Actualizar">
-        <v-btn icon @click="refresh">
-          <v-icon dark class="text-white">fa-refresh</v-icon>
+      <app-tooltip
+        bottom
+        tooltip="Actualizar"
+      >
+        <v-btn
+          icon
+          @click="refresh"
+        >
+          <v-icon
+            dark
+            class="text-white"
+          >fa-refresh</v-icon>
         </v-btn>
       </app-tooltip>
-      <app-tooltip bottom tooltip="Nueva Ubicacion">
+      <app-tooltip
+        bottom
+        tooltip="Nueva Ubicacion"
+      >
         <app-loaction-form></app-loaction-form>
       </app-tooltip>
     </template>
@@ -49,7 +68,7 @@ export default {
     locale: "638bf86ce55413fd71692155d3d082"
   }),
   computed: {
-    localizationlist() {
+    localizationlist () {
       let locallist = this.$store.getters.ui_g_locationlist;
       if (this.selected) {
         let preplist = [];
@@ -69,21 +88,21 @@ export default {
         return locallist;
       }
     },
-    selected() {
+    selected () {
       return this.$route.params.value;
     },
-    parent() {
+    parent () {
       return false;
     }
   },
   watch: {},
   methods: {
-    refresh() {
+    refresh () {
       this.$store.dispatch("ui_a_locationlist");
     }
   },
-  created() {},
-  updated() {
+  created () { },
+  updated () {
     /*
     if (this.localizationlist.length == 0) {
       this.$router.push("/system/locale");

@@ -36,11 +36,21 @@
       </td>
       <td>{{props.item.username}} {{props.item.userlast}}</td>
       <td>
-        <span style="cursor:pointer;text-transform:capitalize" @click="enterAsk(props.item.ID)">
+        <span
+          style="cursor:pointer;text-transform:capitalize"
+          @click="enterAsk(props.item.ID)"
+        >
           <span v-if="props.item.details">{{props.item.details}}</span>
           <span v-else>
-            <app-tooltip bottom tooltip="No Disponible">
-              <v-chip draggable small dark>N/D</v-chip>
+            <app-tooltip
+              bottom
+              tooltip="No Disponible"
+            >
+              <v-chip
+                draggable
+                small
+                dark
+              >N/D</v-chip>
             </app-tooltip>
           </span>
         </span>
@@ -58,57 +68,57 @@
   </v-data-table>
 </template>
 <script>
-import axios from "axios";
+import axios from 'axios';
 
 export default {
-  props: ["search", "items", "brands", "models"],
-  data: () => ({
-    list: {
-      headers: [
-        {
-          text: "Imagen",
-          align: "center",
-          sortable: false,
-          value: "image"
-        },
-        { text: "Usuario", value: "username" },
-        { text: "Descripcion", value: "details" },
+    props: ['search', 'items', 'brands', 'models'],
+    data: () => ({
+        list: {
+            headers: [
+                {
+                    text: 'Imagen',
+                    align: 'center',
+                    sortable: false,
+                    value: 'image'
+                },
+                { text: 'Usuario', value: 'username' },
+                { text: 'Descripcion', value: 'details' },
 
-        { text: "Sub-Parte", value: "subpart" },
-        {
-          text: "Parte",
-          value: "part"
-        },
-        { text: "Marca", value: "brand" },
-        { text: "Modelo", value: "model" },
+                { text: 'Sub-Parte', value: 'subpart' },
+                {
+                    text: 'Parte',
+                    value: 'part'
+                },
+                { text: 'Marca', value: 'brand' },
+                { text: 'Modelo', value: 'model' },
 
-        {
-          text: "Año",
-          value: "year"
+                {
+                    text: 'Año',
+                    value: 'year'
+                },
+                { text: 'Respuestas', value: 'response', align: 'center' }
+            ],
+            nodatatext: 'No hay preguntas que mostrar',
+            rowsperpage: [10, 25, 50, 100, { text: 'Todos', value: -1 }]
+        }
+    }),
+    computed: {
+        parts () {
+            return [];
         },
-        { text: "Respuestas", value: "response", align: "center" }
-      ],
-      nodatatext: "No hay preguntas que mostrar",
-      rowsperpage: [10, 25, 50, 100, { text: "Todos", value: -1 }]
-    }
-  }),
-  computed: {
-    parts() {
-      return [];
+        subparts () {
+            return [];
+        },
+        basedir () {
+            return axios.defaults.baseURL;
+        }
     },
-    subparts() {
-      return [];
+    methods: {
+        enterAsk (value) {
+            this.$router.push('/system/askedall/' + value);
+        }
     },
-    basedir() {
-      return axios.defaults.baseURL;
-    }
-  },
-  methods: {
-    enterAsk(value) {
-      this.$router.push("/system/askedall/" + value);
-    }
-  },
-  created() {}
+    created () { }
 };
 </script>
 

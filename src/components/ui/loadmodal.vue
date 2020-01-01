@@ -29,26 +29,32 @@
               <v-icon left>query_builder</v-icon>Cargando
             </h3>
           </center>
-          <v-progress-linear indeterminate class="mb-0"></v-progress-linear>
+          <v-progress-linear
+            indeterminate
+            class="mb-0"
+          ></v-progress-linear>
         </v-card-text>
       </v-card>
     </v-dialog>
     <!-- </div> -->
-    <div class="overlay" v-if="loading"></div>
+    <div
+      class="overlay"
+      v-if="loading"
+    ></div>
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    loading: Boolean
-  },
-  data() {
-    return {
-      dialog: false
-    };
-  }
-  /* ,
+    props: {
+        loading: Boolean
+    },
+    data () {
+        return {
+            dialog: false
+        };
+    }
+    /* ,
   watch: {
     dialog(val) {
       if (!val) return;

@@ -1,19 +1,36 @@
 <template>
   <span>
-    <v-dialog v-model="form.dialog" :width="form.width" :persistent="form.persistent">
+    <v-dialog
+      v-model="form.dialog"
+      :width="form.width"
+      :persistent="form.persistent"
+    >
       <template v-slot:activator="{ on }">
-        <v-btn icon v-on="on">
+        <v-btn
+          icon
+          v-on="on"
+        >
           <v-icon>{{form.icon}}</v-icon>
         </v-btn>
       </template>
-      <app-panel dark noerror noloading>
+      <app-panel
+        dark
+        noerror
+        noloading
+      >
         <template slot="title">
           <v-icon left>{{form.icon}}</v-icon>
           {{form.action}} {{form.title}}
         </template>
         <template slot="button">
-          <app-tooltip right tooltip="Cerrar Ventana">
-            <v-btn icon @click="oncancel">
+          <app-tooltip
+            right
+            tooltip="Cerrar Ventana"
+          >
+            <v-btn
+              icon
+              @click="oncancel"
+            >
               <v-icon>fa-times</v-icon>
             </v-btn>
           </app-tooltip>
@@ -50,7 +67,12 @@
               <v-icon left>{{form.cancel_icon}}</v-icon>
               {{form.cancel}}
             </v-btn>
-            <v-btn type="submit" color="primary" :disabled="loading" :loading="loading">
+            <v-btn
+              type="submit"
+              color="primary"
+              :disabled="loading"
+              :loading="loading"
+            >
               <v-icon left>{{form.ok_icon}}</v-icon>
               {{form.ok}}
             </v-btn>
@@ -63,7 +85,7 @@
 </template>
 <script>
 export default {
-  /* eslint-disable */
+    /* eslint-disable */
   props: ["item"],
   data: () => ({
     form: {
@@ -82,29 +104,29 @@ export default {
     }
   }),
   computed: {
-    darkset() {
+    darkset () {
       return this.$store.getters.ui_g_dark;
     },
-    user() {
+    user () {
       return this.$store.getters.user_g_user;
     },
-    loading() {
+    loading () {
       return this.$store.getters.ui_g_loading;
     }
   },
   methods: {
-    onsubmit() {
+    onsubmit () {
       let ID = this.item.ID;
       this.$store.dispatch("admin_a_del_brands", ID);
       this.closewindow();
     },
-    oncancel() {
+    oncancel () {
       this.closewindow();
     },
-    closewindow() {
+    closewindow () {
       this.form.dialog = false;
     },
-    onDismissed() {
+    onDismissed () {
       this.$store.dispatch("ui_a_clear_error");
     }
   }
