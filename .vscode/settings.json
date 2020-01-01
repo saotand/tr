@@ -1,4 +1,5 @@
 {
+    "workbench.colorTheme": "Tomorrow Night Blue",
     "git.ignoreMissingGitWarning": true,
     "editor.fontSize": 10,
     "editor.fontFamily": "Fira Code",
@@ -29,7 +30,6 @@
     "rest-client.fontFamily": "Fira Code Light",
     "rest-client.previewResponsePanelTakeFocus": false,
     "rest-client.previewResponseInUntitledDocument": true,
-    "workbench.colorTheme": "Abyss",
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.cursorBlinking": true,
     "editor.suggestSelection": "first",
@@ -73,5 +73,6 @@
     ],
     "jshint.options": {
         "esversion": 6
-    }
+    },
+    "files.autoGuessEncoding": true
 }
