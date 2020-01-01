@@ -1,0 +1,77 @@
+{
+    "git.ignoreMissingGitWarning": true,
+    "editor.fontSize": 10,
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "workbench.statusBar.feedback.visible": false,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 5000,
+    "editor.renderWhitespace": "all",
+    "editor.cursorStyle": "underline",
+    "editor.wordWrap": "on",
+    "editor.cursorBlinking": "solid",
+    "editor.cursorWidth": 4,
+    "editor.find.autoFindInSelection": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": false,
+    "rest-client.decodeEscapedUnicodeCharacters": true,
+    "rest-client.fontSize": 9,
+    "rest-client.fontWeight": "normal",
+    "php.validate.executablePath": "z:\\xampp\\php\\php.exe",
+    "rest-client.disableAddingHrefLinkForLargeResponse": false,
+    "git.enableSmartCommit": true,
+    "editor.minimap.enabled": true,
+    "editor.renderControlCharacters": true,
+    "breadcrumbs.enabled": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "rest-client.followredirect": false,
+    "rest-client.fontFamily": "Fira Code Light",
+    "rest-client.previewResponsePanelTakeFocus": false,
+    "rest-client.previewResponseInUntitledDocument": true,
+    "workbench.colorTheme": "Abyss",
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.cursorBlinking": true,
+    "editor.suggestSelection": "first",
+    "debug.console.fontFamily": "Fira Code Light",
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "bracketPairColorizer.consecutivePairColors": [
+        ["<", "/>"],
+        ["</", ">"],
+        ["<", ">"],
+        [
+            "darkred",
+        ],
+        "Red"
+    ],
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "terminal.integrated.rendererType": "dom",
+    "merge-conflict.autoNavigateNextConflict.enabled": true,
+    "git.allowForcePush": true,
+    "git.alwaysShowStagedChangesResourceGroup": true,
+    "vetur.format.defaultFormatter.js": "vscode-typescript",
+    "vetur.format.defaultFormatter.html": "js-beautify-html",
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+    "eslint.autoFixOnSave": true,
+    "eslint.run": "onSave",
+    "eslint.alwaysShowStatus": true,
+    "eslint.enable": true,
+    "eslint.validate": [{
+            "language": "vue",
+            "autoFix": true
+        },
+        {
+            "language": "html",
+            "autoFix": true
+        },
+        {
+            "language": "javascript",
+            "autoFix": true
+        }
+    ],
+    "jshint.options": {
+        "esversion": 6
+    }
+}
