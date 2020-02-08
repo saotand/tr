@@ -19,17 +19,17 @@
 </template>
 
 <script>
-  export default {
+export default {
     data () {
-      return {
-        text: ''
-      }
+        return {
+            text: ''
+        };
     },
     methods: {
-      appendIconCallback () {},
-      prependIconCallback () {}
+        appendIconCallback () {},
+        prependIconCallback () {}
     }
-  }
+};
 </script>
 
 <style>

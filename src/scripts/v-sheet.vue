@@ -95,22 +95,22 @@
   </v-container>
 </template>
 <script>
-  export default {
+export default {
     components: {
-      SheetFooter: {
-        functional: true,
+        SheetFooter: {
+            functional: true,
 
-        render (h, { children }) {
-          return h('v-sheet', {
-            staticClass: 'mt-auto align-center justify-center d-flex',
-            props: {
-              color: 'rgba(0, 0, 0, .36)',
-              dark: true,
-              height: 50
+            render (h, { children }) {
+                return h('v-sheet', {
+                    staticClass: 'mt-auto align-center justify-center d-flex',
+                    props: {
+                        color: 'rgba(0, 0, 0, .36)',
+                        dark: true,
+                        height: 50
+                    }
+                }, children);
             }
-          }, children)
         }
-      }
     }
-  }
+};
 </script>

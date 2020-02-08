@@ -15,17 +15,17 @@
 
 <script>
 export default {
-  data: () => ({
-    items: [
-      { title: "Click Me" },
-      { title: "Click Me" },
-      { title: "Click Me" },
-      { title: "Click Me 2" }
-    ]
-  }),
-  methods: {
-    sel() {
+    data: () => ({
+        items: [
+            { title: 'Click Me' },
+            { title: 'Click Me' },
+            { title: 'Click Me' },
+            { title: 'Click Me 2' }
+        ]
+    }),
+    methods: {
+        sel() {
+        }
     }
-  }
 };
 </script>

@@ -17,7 +17,7 @@ new Vue({
     store,
     axios,
     render: h => h(App),
-    mounted() {
+    mounted () {
         this.$store.dispatch('ui_a_locationlist');
         this.$store.dispatch('user_a_autosignin');
 

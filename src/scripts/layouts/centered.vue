@@ -57,17 +57,17 @@
 
 <script>
 export default {
-  data: () => ({
-    drawer: null
-  }),
+    data: () => ({
+        drawer: null
+    }),
 
-  props: {
-    source: String
-  },
-  methods: {
-    dummyfunction() {
-      alert("demo");
+    props: {
+        source: String
+    },
+    methods: {
+        dummyfunction() {
+            alert('demo');
+        }
     }
-  }
 };
 </script>

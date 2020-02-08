@@ -7,7 +7,7 @@ const applicationServerPublicKey = 'BBcPVet4FAvCSZ_v7MHblg_pQ9BPNfTg5azdn-sWRiPI
 let isSubscribed = false;
 let swRegistration = null;
 
-function urlB64ToUint8Array(base64String) {
+function urlB64ToUint8Array (base64String) {
     const padding = '='.repeat((4 - base64String.length % 4) % 4);
     const base64 = (base64String + padding)
         .replace(/-/g, '+')
@@ -22,23 +22,18 @@ function urlB64ToUint8Array(base64String) {
     return outputArray;
 }
 
-
-
-
 //alert(process.env.NODE_ENV);
 //if (process.env.NODE_ENV === 'production') {
 //register(`${process.env.BASE_URL}sw.js`, {
 register('./sw.js', {
-    ready(event) {
-
-
+    ready (event) {
         console.log(
             'App is being served from cache by a service worker.\n' +
             'For more details, visit https://goo.gl/AFskqB'
         );
         swRegistration = event;
 
-        function initialiseUI() {
+        function initialiseUI () {
             //pushButton.addEventListener('click', function () {
             //  pushButton.disabled = true;
             if (isSubscribed) {
@@ -48,7 +43,6 @@ register('./sw.js', {
             }
             //});
         }
-
 
         // Set the initial subscription value
         swRegistration.pushManager.getSubscription()
@@ -62,12 +56,10 @@ register('./sw.js', {
                 } else {
                     console.log('User is NOT subscribed.');
                 }
-
                 //updateBtn();
             });
 
-
-        function updateBtn() {
+        function updateBtn () {
             if (Notification.permission === 'denied') {
                 //pushButton.textContent = 'Push Messaging Blocked.';
                 //pushButton.disabled = true;
@@ -79,11 +71,10 @@ register('./sw.js', {
             } else {
                 //pushButton.textContent = 'Enable Push Messaging';
             }
-
             //pushButton.disabled = false;
         }
 
-        function subscribeUser() {
+        function subscribeUser () {
             const applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
             swRegistration.pushManager.subscribe({
                 userVisibleOnly: true,
@@ -91,11 +82,8 @@ register('./sw.js', {
             })
                 .then(function (subscription) {
                     console.log('User is subscribed:', subscription);
-
                     updateSubscriptionOnServer(subscription);
-
                     isSubscribed = true;
-
                     updateBtn();
                 })
                 .catch(function (err) {
@@ -104,12 +92,10 @@ register('./sw.js', {
                 });
         }
 
-        function updateSubscriptionOnServer(subscription) {
+        function updateSubscriptionOnServer (subscription) {
             // TODO: Send subscription to application server
-
             //const subscriptionJson = document.querySelector('.js-subscription-json');
             //const subscriptionDetails = document.querySelector('.js-subscription-details');
-
             if (subscription) {
                 // Establecer elementos que puedan mostrarse para enviar datos de Push notifications
                 //subscriptionJson.textContent = JSON.stringify(subscription);
@@ -120,29 +106,24 @@ register('./sw.js', {
             }
         }
 
-
-
         initialiseUI();
-
-
-
     },
-    registered() {
+    registered () {
         console.log('Service worker has been registered.');
     },
-    cached() {
+    cached () {
         console.log('Content has been cached for offline use.');
     },
-    updatefound() {
+    updatefound () {
         console.log('New content is downloading.');
     },
-    updated() {
+    updated () {
         console.log('New content is available; please refresh.');
     },
-    offline() {
+    offline () {
         console.log('No internet connection found. App is running in offline mode.');
     },
-    error(error) {
+    error (error) {
         console.error('Error during service worker registration:', error);
     }
 });

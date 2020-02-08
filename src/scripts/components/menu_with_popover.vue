@@ -60,12 +60,12 @@
 
 <script>
 export default {
-  data: () => ({
-    fav: true,
-    menu: false,
-    message: false,
-    hints: true
-  })
+    data: () => ({
+        fav: true,
+        menu: false,
+        message: false,
+        hints: true
+    })
 };
 </script>
 

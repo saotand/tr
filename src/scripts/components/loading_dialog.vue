@@ -32,19 +32,19 @@
   </div>
 </template>
 <script>
-  export default {
+export default {
     data () {
-      return {
-        dialog: false
-      }
+        return {
+            dialog: false
+        };
     },
 
     watch: {
-      dialog (val) {
-        if (!val) return
+        dialog (val) {
+            if (!val) return;
 
-        setTimeout(() => (this.dialog = false), 4000)
-      }
+            setTimeout(() => (this.dialog = false), 4000);
+        }
     }
-  }
+};
 </script>

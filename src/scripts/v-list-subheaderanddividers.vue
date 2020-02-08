@@ -83,14 +83,14 @@
   </v-layout>
 </template>
 <script>
-  export default {
+export default {
     data () {
-      return {
-        notifications: false,
-        sound: false,
-        video: false,
-        invites: false
-      }
+        return {
+            notifications: false,
+            sound: false,
+            video: false,
+            invites: false
+        };
     }
-  }
+};
 </script>

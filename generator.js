@@ -1,4 +1,4 @@
-const workbox = require('workbox-build')
+const workbox = require('workbox-build');
 
 workbox.generateSW(
     {
@@ -25,4 +25,4 @@ workbox.generateSW(
                 }
             }
         ]
-    })
+    });

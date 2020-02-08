@@ -50,70 +50,70 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 
-import cmpPopupProfile from "@/components/modules/user/popup_profile";
-import cmpUserForm from "@/components/modules/user/dialogs/user_form.vue";
+import cmpPopupProfile from '@/components/modules/user/popup_profile';
+import cmpUserForm from '@/components/modules/user/dialogs/user_form.vue';
 
 export default {
-  props: ["users", "search"],
-  data() {
-    return {
-      pagination: "0",
-      master: "100000000000000000000000000001",
-      levels: [
-        "Usuario",
-        "Vendedor",
-        "Mayorista",
-        "Agente",
-        "Supervisor",
-        "Administrador"
-      ],
-      headers: [
-        {
-          text: "Foto",
-          align: "center",
-          sortable: false,
-          value: "image"
-        },
-        {
-          text: "Email",
-          align: "left",
-          sortable: true,
-          value: "email"
-        },
-        {
-          text: "Nombre",
-          value: "name"
-        },
-        {
-          text: "Cedula",
-          value: "doc"
-        },
-        {
-          text: "Tipo",
-          value: "level"
-        },
-        {
-          text: "Opciones",
-          align: "center",
-          sortable: false
-        }
-      ]
-    };
-  },
-  computed: {
-    user() {
-      return this.$store.getters.user_g_user;
+    props: ['users', 'search'],
+    data() {
+        return {
+            pagination: '0',
+            master: '100000000000000000000000000001',
+            levels: [
+                'Usuario',
+                'Vendedor',
+                'Mayorista',
+                'Agente',
+                'Supervisor',
+                'Administrador'
+            ],
+            headers: [
+                {
+                    text: 'Foto',
+                    align: 'center',
+                    sortable: false,
+                    value: 'image'
+                },
+                {
+                    text: 'Email',
+                    align: 'left',
+                    sortable: true,
+                    value: 'email'
+                },
+                {
+                    text: 'Nombre',
+                    value: 'name'
+                },
+                {
+                    text: 'Cedula',
+                    value: 'doc'
+                },
+                {
+                    text: 'Tipo',
+                    value: 'level'
+                },
+                {
+                    text: 'Opciones',
+                    align: 'center',
+                    sortable: false
+                }
+            ]
+        };
     },
-    baseurl() {
-      return axios.defaults.baseURL;
+    computed: {
+        user() {
+            return this.$store.getters.user_g_user;
+        },
+        baseurl() {
+            return axios.defaults.baseURL;
+        }
+    },
+    components: {
+        'app-user-form': cmpUserForm,
+        'app-popupuserinfo': cmpPopupProfile
     }
-  },
-  components: {
-    "app-user-form": cmpUserForm,
-    "app-popupuserinfo": cmpPopupProfile
-  }
 };
 </script>
 

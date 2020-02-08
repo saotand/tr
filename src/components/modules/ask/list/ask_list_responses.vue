@@ -209,7 +209,7 @@
       v-model="pictureshow"
       width="500px"
     >
-      <template v-slot:activator="{ on }"></template>
+      <template v-slot:activator=""></template>
       <app-panel
         noerror
         noloading
@@ -321,7 +321,7 @@
       width="600"
       persistent
     >
-      <template v-slot:activator="{on}"></template>
+      <template v-slot:activator=""></template>
       <app-panel
         noerror
         noloading
@@ -376,7 +376,7 @@
                   v-model="rpayload.details"
                   multi-line
                   label="Descripcion"
-                  hint="Por favor no colocar informacion de contacto o enlaces externos a este sitio, las respuestas serÃ¡n verificadas"
+                  hint="Por favor no colocar informacion de contacto o enlaces externos a este sitio, las respuestas serán verificadas"
                   persistent-hint
                 ></v-textarea>
               </v-flex>
@@ -401,13 +401,12 @@
         </v-card-actions>
       </app-panel>
     </v-dialog>
-    <code>{{crpayload}}</code>
-    <br />
-    <code>{{rpayload}}</code>
   </span>
 </template>
 
 <script>
+/* eslint-disable */
+
 import axios from 'axios';
 export default {
     props: ['items', 'search', 'view'],

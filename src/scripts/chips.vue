@@ -24,19 +24,19 @@
 </template>
 
 <script>
-  export default {
+export default {
     data () {
-      return {
-        chips: ['Programming', 'Playing video games', 'Watching movies', 'Sleeping'],
-        items: ['Streaming', 'Eating']
-      }
+        return {
+            chips: ['Programming', 'Playing video games', 'Watching movies', 'Sleeping'],
+            items: ['Streaming', 'Eating']
+        };
     },
 
     methods: {
-      remove (item) {
-        this.chips.splice(this.chips.indexOf(item), 1)
-        this.chips = [...this.chips]
-      }
+        remove (item) {
+            this.chips.splice(this.chips.indexOf(item), 1);
+            this.chips = [...this.chips];
+        }
     }
-  }
+};
 </script>

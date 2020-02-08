@@ -18,15 +18,15 @@
 </template>
 
 <script>
-  export default {
+export default {
     data: () => ({
-      swipeDirection: 'None'
+        swipeDirection: 'None'
     }),
 
     methods: {
-      swipe (direction) {
-        this.swipeDirection = direction
-      }
+        swipe (direction) {
+            this.swipeDirection = direction;
+        }
     }
-  }
+};
 </script>

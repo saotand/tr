@@ -12,6 +12,10 @@ export default {
         }
         state.ask.years.reverse();
     },
+    /*
+    ask_m_selask: (state, ask) => {
+        alert('updateask');
+    },*/
     ask_m_brands: (state, payload) => {
         state.ask.brands = payload;
     },

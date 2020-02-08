@@ -43,90 +43,90 @@
 
 <script>
 export default {
-  props: {
-    value: {
-      default: ""
-    }
-  },
-  data: () => ({
-    location: "",
-    city: "",
-    country: ""
-  }),
-  watch: {
-    countrysel (valuec) {
-      this.gotfromlocation(valuec);
+    props: {
+        value: {
+            default: ''
+        }
     },
-    location (value) {
-      if (value != "") {
-        this.gotfromlocation(value);
-      }
-    }
-  },
-  computed: {
-    countrysel () {
-      return this.$store.getters.ui_g_locationlist;
-    },
-    citysel () {
-      let countrylist = [];
-      if (this.countrysel) {
-        this.countrysel.forEach(c => {
-          if (c.value == this.country) {
-            c.childs.forEach(city => {
-              countrylist.push(city);
-            });
-          }
-        });
-      }
-      return countrylist;
-    },
-    locationsel () {
-      let locationlist = [];
-      if (this.citysel) {
-        this.citysel.forEach(l => {
-          if (l.value == this.city) {
-            l.childs.forEach(location => {
-              locationlist.push(location);
-            });
-          }
-        });
-      }
-      return locationlist;
-    }
-  },
-  methods: {
-    updateCmp () {
-      this.$emit("input", this.location);
-    },
-    gotfromlocation (location) {
-      this.countrysel.forEach(country_e => {
-        country_e.childs.forEach(city_e => {
-          city_e.childs.forEach(location_e => {
-            if (location_e.value == location) {
-              this.country = country_e.value;
-              this.city = city_e.value;
-              this.location = location_e.value;
+    data: () => ({
+        location: '',
+        city: '',
+        country: ''
+    }),
+    watch: {
+        countrysel (valuec) {
+            this.gotfromlocation(valuec);
+        },
+        location (value) {
+            if (value != '') {
+                this.gotfromlocation(value);
             }
-          });
-        });
-      });
+        }
     },
-    clean_city () {
-      this.city = "";
-      this.location = "";
-      this.$emit("input", "");
+    computed: {
+        countrysel () {
+            return this.$store.getters.ui_g_locationlist;
+        },
+        citysel () {
+            let countrylist = [];
+            if (this.countrysel) {
+                this.countrysel.forEach(c => {
+                    if (c.value == this.country) {
+                        c.childs.forEach(city => {
+                            countrylist.push(city);
+                        });
+                    }
+                });
+            }
+            return countrylist;
+        },
+        locationsel () {
+            let locationlist = [];
+            if (this.citysel) {
+                this.citysel.forEach(l => {
+                    if (l.value == this.city) {
+                        l.childs.forEach(location => {
+                            locationlist.push(location);
+                        });
+                    }
+                });
+            }
+            return locationlist;
+        }
     },
-    clean_location () {
-      this.location = "";
-      this.$emit("input", "");
+    methods: {
+        updateCmp () {
+            this.$emit('input', this.location);
+        },
+        gotfromlocation (location) {
+            this.countrysel.forEach(country_e => {
+                country_e.childs.forEach(city_e => {
+                    city_e.childs.forEach(location_e => {
+                        if (location_e.value == location) {
+                            this.country = country_e.value;
+                            this.city = city_e.value;
+                            this.location = location_e.value;
+                        }
+                    });
+                });
+            });
+        },
+        clean_city () {
+            this.city = '';
+            this.location = '';
+            this.$emit('input', '');
+        },
+        clean_location () {
+            this.location = '';
+            this.$emit('input', '');
+        }
+    },
+    created () {
+        this.location = this.value;
+    },
+    mounted () {
+        this.gotfromlocation(this.value);
     }
-  },
-  created () {
-    this.location = this.value;
-  },
-  mounted () {
-    this.gotfromlocation(this.value);
-  }
 };
 
 /*

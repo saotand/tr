@@ -22,10 +22,10 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
-      dialog: false
-    };
-  }
+    data() {
+        return {
+            dialog: false
+        };
+    }
 };
 </script>

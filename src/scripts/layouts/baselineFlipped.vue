@@ -64,16 +64,16 @@
 
 <script>
 export default {
-  data: () => ({
-    drawer: null
-  }),
-  props: {
-    source: String
-  },
-  methods: {
-    dummyfunction() {
-      alert("demo");
+    data: () => ({
+        drawer: null
+    }),
+    props: {
+        source: String
+    },
+    methods: {
+        dummyfunction() {
+            alert('demo');
+        }
     }
-  }
 };
 </script>

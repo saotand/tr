@@ -5,22 +5,22 @@
   </v-layout>
 </template>
 <script>
-  export default {
+export default {
     data: () => ({
-      windowSize: {
-        x: 0,
-        y: 0
-      }
+        windowSize: {
+            x: 0,
+            y: 0
+        }
     }),
 
     mounted () {
-      this.onResize()
+        this.onResize();
     },
 
     methods: {
-      onResize () {
-        this.windowSize = { x: window.innerWidth, y: window.innerHeight }
-      }
+        onResize () {
+            this.windowSize = { x: window.innerWidth, y: window.innerHeight };
+        }
     }
-  }
+};
 </script>

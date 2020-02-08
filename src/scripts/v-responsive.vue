@@ -34,7 +34,7 @@ Default
 undefined
 Type
 number | string
-Configura la altura máxima para el contenido
+Configura la altura mï¿½xima para el contenido
 
 Nombre
 max-width

@@ -184,6 +184,8 @@ export default {
                         name: 'parts'
                     }
                 },
+                /*
+                
                 {
                     title: 'Localizacion',
                     icon: 'fa-map',
@@ -191,6 +193,7 @@ export default {
                         name: 'localz'
                     }
                 },
+                */
                 {
                     divider: true
                 }

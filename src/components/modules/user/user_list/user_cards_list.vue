@@ -29,21 +29,21 @@
 </template>
 
 <script>
-import cmpucard from "@/components/modules/user/user_cards/mini_user_info_card";
+import cmpucard from '@/components/modules/user/user_cards/mini_user_info_card';
 
 export default {
-  props: ["users", "search"],
-  data() {
-    return {
-      pagination: {},
-      rowsPerPageItems: [12, 24, 48, 96, { text: "Todos", value: -1 }]
-    };
-  },
-  methods: {},
-  computed: {},
-  components: {
-    "app-miniucard": cmpucard
-  }
+    props: ['users', 'search'],
+    data() {
+        return {
+            pagination: {},
+            rowsPerPageItems: [12, 24, 48, 96, { text: 'Todos', value: -1 }]
+        };
+    },
+    methods: {},
+    computed: {},
+    components: {
+        'app-miniucard': cmpucard
+    }
 };
 </script>
 

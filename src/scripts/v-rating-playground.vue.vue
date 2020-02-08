@@ -61,16 +61,16 @@
   </div>
 </template>
 <script>
-  export default {
+export default {
     data: () => ({
-      emptyIcon: 'mdi-heart-outline',
-      fullIcon: 'mdi-heart',
-      halfIcon: 'mdi-heart-half-full',
-      halfIncrements: false,
-      hover: true,
-      length: 5,
-      rating: 2,
-      readonly: false
+        emptyIcon: 'mdi-heart-outline',
+        fullIcon: 'mdi-heart',
+        halfIcon: 'mdi-heart-half-full',
+        halfIncrements: false,
+        hover: true,
+        length: 5,
+        rating: 2,
+        readonly: false
     })
-  }
+};
 </script>

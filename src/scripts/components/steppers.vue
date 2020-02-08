@@ -67,11 +67,11 @@
   </v-stepper>
 </template>
 <script>
-  export default {
+export default {
     data () {
-      return {
-        e1: 0
-      }
+        return {
+            e1: 0
+        };
     }
-  }
+};
 </script>

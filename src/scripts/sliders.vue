@@ -91,13 +91,13 @@
   </v-container>
 </template>
 <script>
-  export default {
+export default {
     data () {
-      return {
-        slider: 45,
-        volume: 10,
-        price: [110, 440]
-      }
+        return {
+            slider: 45,
+            volume: 10,
+            price: [110, 440]
+        };
     }
-  }
+};
 </script>

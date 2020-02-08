@@ -72,19 +72,19 @@
 
 <script>
 export default {
-  data: () => ({
-    drawer: null,
-    drawerRight: null,
-    right: false,
-    left: false
-  }),
-  props: {
-    source: String
-  },
-  methods: {
-    dummyfunction() {
-      alert("demo");
+    data: () => ({
+        drawer: null,
+        drawerRight: null,
+        right: false,
+        left: false
+    }),
+    props: {
+        source: String
+    },
+    methods: {
+        dummyfunction() {
+            alert('demo');
+        }
     }
-  }
 };
 </script>

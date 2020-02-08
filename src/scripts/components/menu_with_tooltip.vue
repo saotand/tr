@@ -26,14 +26,14 @@
   </div>
 </template>
 <script>
-  export default {
+export default {
     data: () => ({
-      items: [
-        { title: 'Click Me1' },
-        { title: 'Click Me2' },
-        { title: 'Click Me3' },
-        { title: 'Click Me4' }
-      ]
+        items: [
+            { title: 'Click Me1' },
+            { title: 'Click Me2' },
+            { title: 'Click Me3' },
+            { title: 'Click Me4' }
+        ]
     })
-  }
+};
 </script>
