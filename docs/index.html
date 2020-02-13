@@ -1,148 +1,106 @@
-<!DOCTYPE html>
-<html lang=es>
+<!DOCTYPE html><html lang=es><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=icon href=/favicon.ico><link href="./style.css?family=Material+Icons" rel=stylesheet><meta name=theme-color content=#EC3224><meta name=msapplication-navbutton-color content=#EC3224><meta name=apple-mobile-web-app-status-bar-style content=#EC3224><link rel=manifest href=./manifest.json><title>TuRepuesto.com</title><link href=/css/app.9221cec7.css rel=preload as=style><link href=/css/chunk-vendors.f66b9002.css rel=preload as=style><link href=/js/app.bbe112c4.js rel=preload as=script><link href=/js/chunk-vendors.dac25c81.js rel=preload as=script><link href=/css/chunk-vendors.f66b9002.css rel=stylesheet><link href=/css/app.9221cec7.css rel=stylesheet></head><body><noscript><br><br><br><br><center><strong>Lo sentimos pero este sitio web no funciona adecuadamente si JavaScript esta deshabilitado. Por favor habilitelo para continuar.</strong></center></noscript><div id=app><div class=showbox><div class=mainloader><div class=image_holder></div><br><div class=loader><svg class=circular viewBox="25 25 50 50"><circle class=path cx=50 cy=50 r=20 fill=none stroke-width=2 stroke-miterlimit=10 /></svg></div></div></div><style>body {
+        background-color: #303030;
+      }
 
-  <head>
-    <meta charset=utf-8>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="icon" href="./favicon.ico">
-    <link href="./style.css?family=Material+Icons" rel="stylesheet">
-    <meta name="theme-color" content="#EC3224">
-    <meta name="msapplication-navbutton-color" content="#EC3224">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#EC3224">
-    <link rel="manifest" href="./manifest.json">
-    <title>TuRepuesto.com</title>
-    <link href="./css/app.9221cec7.css" rel="preload" as="style">
-    <link href="./css/chunk-vendors.f66b9002.css" rel="preload" as="style">
-    <link href="./js/app.bbe112c4.js" rel=preload as="script">
-    <link href="./js/chunk-vendors.dac25c81.js" rel=preload as="script">
-    <link href="./css/chunk-vendors.f66b9002.css" rel="stylesheet">
-    <link href="./css/app.9221cec7.css" rel="stylesheet">
-  </head>
+      html {
+        font-family: Arial, Helvetica, sans-serif;
+        overflow: hidden;
+      }
 
-  <body><noscript><br><br><br><br>
-      <center><strong>Lo sentimos pero este sitio web no funciona adecuadamente si JavaScript esta deshabilitado. Por
-          favor habilitelo para continuar.</strong></center>
-    </noscript>
-    <div id=app>
-      <div class=showbox>
-        <div class=mainloader>
-          <div class=image_holder></div><br>
-          <div class=loader><svg class=circular viewBox="25 25 50 50">
-              <circle class=path cx=50 cy=50 r=20 fill=none stroke-width=2 stroke-miterlimit=10 /></svg></div>
-        </div>
-      </div>
-      <style>
-        body {
-          background-color: #303030;
+      .image_holder {
+        max-width: 100%;
+        max-height: 100%;
+        width: 410px;
+        height: 45px;
+        background: url('./img/logominidark.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+      }
+
+      .mainloader {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /*border: 1px solid #ff0000;*/
+        width: 410px;
+        height: 200px;
+      }
+
+      .loader {
+        position: relative;
+        margin: 0 auto;
+        width: 100px;
+      }
+
+      .loader:before {
+        content: '';
+        display: block;
+        padding-top: 100%;
+      }
+
+      .circular {
+        animation: rotate 2s linear infinite;
+        height: 100%;
+        transform-origin: center center;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+
+      .path {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+        animation: dash 2.0s ease-in-out infinite, color 3s ease-in-out infinite;
+        stroke-linecap: round;
+      }
+
+      @keyframes rotate {
+        100% {
+          transform: rotate(360deg);
         }
+      }
 
-        html {
-          font-family: Arial, Helvetica, sans-serif;
-          overflow: hidden;
-        }
-
-        .image_holder {
-          max-width: 100%;
-          max-height: 100%;
-          width: 410px;
-          height: 45px;
-          background: url('./img/logominidark.png');
-          background-repeat: no-repeat;
-          background-size: contain;
-          background-position: center center;
-        }
-
-        .mainloader {
-          text-align: center;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          /*border: 1px solid #ff0000;*/
-          width: 410px;
-          height: 200px;
-        }
-
-        .loader {
-          position: relative;
-          margin: 0 auto;
-          width: 100px;
-        }
-
-        .loader:before {
-          content: '';
-          display: block;
-          padding-top: 100%;
-        }
-
-        .circular {
-          animation: rotate 2s linear infinite;
-          height: 100%;
-          transform-origin: center center;
-          width: 100%;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          margin: auto;
-        }
-
-        .path {
+      @keyframes dash {
+        0% {
           stroke-dasharray: 1, 200;
           stroke-dashoffset: 0;
-          animation: dash 2.0s ease-in-out infinite, color 3s ease-in-out infinite;
-          stroke-linecap: round;
         }
 
-        @keyframes rotate {
-          100% {
-            transform: rotate(360deg);
-          }
+        50% {
+          stroke-dasharray: 89, 200;
+          stroke-dashoffset: -35px;
         }
 
-        @keyframes dash {
-          0% {
-            stroke-dasharray: 1, 200;
-            stroke-dashoffset: 0;
-          }
+        100% {
+          stroke-dasharray: 89, 200;
+          stroke-dashoffset: -124px;
+        }
+      }
 
-          50% {
-            stroke-dasharray: 89, 200;
-            stroke-dashoffset: -35px;
-          }
+      @keyframes color {
 
-          100% {
-            stroke-dasharray: 89, 200;
-            stroke-dashoffset: -124px;
-          }
+        100%,
+        0% {
+          stroke: #d62d20;
         }
 
-        @keyframes color {
-
-          100%,
-          0% {
-            stroke: #d62d20;
-          }
-
-          40% {
-            stroke: #d62d20;
-          }
-
-          66% {
-            stroke: #d62d20;
-          }
-
-          80%,
-          90% {
-            stroke: #d62d20;
-          }
+        40% {
+          stroke: #d62d20;
         }
-      </style>
-    </div>
-    <script src="./js/chunk-vendors.dac25c81.js"> </script>
-    <script src="./js/app.bbe112c4.js"> </script>
-  </body>
 
-</html>
+        66% {
+          stroke: #d62d20;
+        }
+
+        80%,
+        90% {
+          stroke: #d62d20;
+        }
+      }</style></div><script src=/js/chunk-vendors.dac25c81.js></script><script src=/js/app.bbe112c4.js></script></body></html>

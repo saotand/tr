@@ -2,44 +2,43 @@
   "name": "TuRepuesto.com",
   "short_name": "TR",
   "description": "Consulta tu repuesto en nuestro sitio web",
-  "start_url": "./?source=homescreen",
+  "start_url": "/?source=homescreen",
   "display": "standalone",
   "theme_color": "#EC3224",
   "orientation": "portrait",
   "background_color": "#EC3224",
-  "icons": [
-    {
-      "src": "./img/icons/webapp-icon-32.png",
+  "icons": [{
+      "src": "/img/icons/webapp-icon-32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "./img/icons/webapp-icon-60.png",
+      "src": "/img/icons/webapp-icon-60.png",
       "sizes": "60x60",
       "type": "image/png"
     },
     {
-      "src": "./img/icons/webapp-icon-80.png",
+      "src": "/img/icons/webapp-icon-80.png",
       "sizes": "80x80",
       "type": "image/png"
     },
     {
-      "src": "./img/icons/webapp-icon-128.png",
+      "src": "/img/icons/webapp-icon-128.png",
       "sizes": "128x128",
       "type": "image/png"
     },
     {
-      "src": "./img/icons/webapp-icon-192.png",
+      "src": "/img/icons/webapp-icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "./img/icons/webapp-icon-256.png",
+      "src": "/img/icons/webapp-icon-256.png",
       "sizes": "256x256",
       "type": "image/png"
     },
     {
-      "src": "./img/icons/webapp-icon-512.png",
+      "src": "/img/icons/webapp-icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
