@@ -6,7 +6,7 @@ import axios from 'axios';
 
 
 // HOME NET
-axios.defaults.baseURL = 'http://192.168.1.100/';
+//axios.defaults.baseURL = 'http://192.168.1.100/';
 
 //HOME SELF
 //axios.defaults.baseURL = "http://api.carparts/";
@@ -14,6 +14,8 @@ axios.defaults.baseURL = 'http://192.168.1.100/';
 // G77
 //axios.defaults.baseURL = "http://servidorg77:2077/";
 
+// WEB
+axios.defaults.baseURL = 'https://api.grupo77.com.ve/';
 
 //Authorization
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
@@ -31,11 +33,11 @@ const _axios = axios.create(config);
 
 _axios.interceptors.request.use(
     function (config) {
-    // Do something before request is sent
+        // Do something before request is sent
         return config;
     },
     function (error) {
-    // Do something with request error
+        // Do something with request error
         return Promise.reject(error);
     }
 );
@@ -43,11 +45,11 @@ _axios.interceptors.request.use(
 // Add a response interceptor
 _axios.interceptors.response.use(
     function (response) {
-    // Do something with response data
+        // Do something with response data
         return response;
     },
     function (error) {
-    // Do something with response error
+        // Do something with response error
         return Promise.reject(error);
     }
 );
@@ -57,12 +59,12 @@ Plugin.install = function (Vue) {
     window.axios = _axios;
     Object.defineProperties(Vue.prototype, {
         axios: {
-            get() {
+            get () {
                 return _axios;
             }
         },
         $axios: {
-            get() {
+            get () {
                 return _axios;
             }
         }
