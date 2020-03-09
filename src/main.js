@@ -20,6 +20,5 @@ new Vue({
     mounted () {
         this.$store.dispatch('ui_a_locationlist');
         this.$store.dispatch('user_a_autosignin');
-
     }
 }).$mount('#app');
