@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import Vue from 'vue';
 import axios from 'axios';
 
@@ -15,7 +16,11 @@ import axios from 'axios';
 //axios.defaults.baseURL = "http://servidorg77:2077/";
 
 // WEB
-axios.defaults.baseURL = 'https://api.grupo77.com.ve/';
+//axios.defaults.baseURL = 'https://api.grupo77.com.ve/';
+
+
+// Base URL
+axios.defaults.baseURL = process.env.VUE_APP_apiURL;
 
 //Authorization
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;

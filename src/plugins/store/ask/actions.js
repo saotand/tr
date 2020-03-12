@@ -228,6 +228,7 @@ export default {
             axios.post(URL, null, options)
                 .then(response => {
                     let profile = response.data.data;
+                    console.log(response);
                     commit("ask_m_responses", profile);
                 })
                 .catch(error => {

@@ -65,6 +65,7 @@
         <td>{{props.item.model}}</td>
         <td>{{props.item.year}}</td>
         <td>
+            <code>{{props.item}}</code>
           <app-tooltip
             top
             tooltip="Responder"
@@ -159,6 +160,7 @@
                 <v-list-tile-content class="align-end">{{ props.item.year }}</v-list-tile-content>
               </v-list-tile>
               <v-list-tile>
+                  
                 <v-list-tile-content class="align-end">
                   <v-container>
                     <v-layout
@@ -254,7 +256,6 @@
         </form>
       </app-panel>
     </v-dialog>
-
     <v-dialog
       v-model="cresponse"
       width="500"

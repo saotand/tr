@@ -2,8 +2,8 @@
   <div>
     <v-parallax
       dark
+      :style="parallaxstyle"
       src="./img/repuestos.jpg"
-      class="autoblur"
     >
       <v-container
         grid-list-md
@@ -11,13 +11,13 @@
         style="margin-top:50px"
       >
         <v-layout
-          row
-          wrap
+        :column="(breakpoint.xs || breakpoint.sm)"
+        nowrap
         >
-          <v-flex xs3>
+          <v-flex xs3 :style="stylepuba">
             <app-pubmainask></app-pubmainask>
           </v-flex>
-          <v-flex xs6>
+          <v-flex xs6 :style="styleaskform">
             <form @submit.prevent="sendAsk">
               <v-layout
                 align-center
@@ -29,7 +29,7 @@
                   text-xs-center
                 >
                   <v-layout
-                    row
+
                     wrap
                     class="blackbg"
                   >
@@ -203,7 +203,7 @@
               </v-layout>
             </form>
           </v-flex>
-          <v-flex xs3>
+          <v-flex xs3 :style="stylepubb">
             <app-pubmainask></app-pubmainask>
           </v-flex>
         </v-layout>
@@ -369,6 +369,39 @@ export default {
     },
     ecolor () {
       return this.$store.getters.ui_g_ecolor;
+    },
+    breakpoint(){
+        return this.$vuetify.breakpoint;
+    },
+    styleaskform(){
+        let styles = {}
+        if(this.breakpoint.xs || this.breakpoint.sm ){
+            styles = {'order':1}
+        }else{
+            styles = {'order':2}
+        }        
+        return styles;
+    },
+    stylepuba(){
+        let styles = {}
+        if(this.breakpoint.xs || this.breakpoint.sm ){
+            styles = {'order':2}
+        }else{
+            styles = {'order':1}
+        }
+        return styles;
+    },
+    stylepubb(){
+        return {'order':3}
+    },
+    parallaxstyle(){
+        let styles = {}
+        if(this.breakpoint.xs || this.breakpoint.sm ){
+            styles = {'height':'1450px'}
+        }else{
+            styles = {'height':'600px'}
+        }
+        return styles;
     }
   },
   watch: {},
@@ -434,6 +467,7 @@ export default {
   },
   created () {
     this.updateselects();
+    console.log(this.breakpoint);
   }
 };
 </script>

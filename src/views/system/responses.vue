@@ -76,7 +76,8 @@ export default {
     }),
     computed: {
         responses () {
-            return this.$store.getters.ask_g_responses;
+            let rp = this.$store.getters.ask_g_responses;
+            return rp;
         }
     },
     methods: {
