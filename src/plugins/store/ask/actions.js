@@ -1,7 +1,6 @@
 /* eslint-disable */
 import axios from "axios";
 
-
 export default {
     ask_a_selectresponse ({ commit }, payload) {
         const Token = sessionStorage.getItem("token");
@@ -95,7 +94,6 @@ export default {
                     commit("ui_m_loading", false);
                 });
         }
-
     },
     /* FORM ACTIONS FOR ASK COMPONENT */
     ask_a_years: ({ commit }) => {
