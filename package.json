@@ -13,7 +13,7 @@
     "@toast-ui/vue-image-editor": "^1.0.2",
     "core-js": "^2.6.11",
     "jshint": "^2.10.3",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "moment": "^2.24.0",
     "register-service-worker": "^1.6.2",
     "roboto-fontface": "*",
